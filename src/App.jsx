@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-// Components
+
 import Header from "./Header";
 import Hero from "./Hero";
 import SplitCards from "./SplitCards";
