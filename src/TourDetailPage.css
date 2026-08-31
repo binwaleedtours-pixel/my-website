@@ -1,3 +1,4 @@
+/* 1. Main Page Container */
 .tour-detail-page {
   background: var(--cream-1, #fbfaf8);
   color: var(--ink, #0c211e);
@@ -5,42 +6,132 @@
   padding-bottom: 90px;
 }
 
+/* 2. Hero Banner Adjustment (Proper Header Space & Height) */
 .tour-banner {
-  padding: 140px 24px 70px;
+  /* Banner ko header se neche gap dene ke liye top padding */
+  padding: 120px 24px 80px !important;
   background-size: cover;
   background-position: center;
-  color: #ffffff;
+  color: #ffffff !important;
+  text-align: left;
+  position: relative;
+  /* Visual gap between banner and background */
+  margin-bottom: 0px;
 }
 
+.banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .location-badge {
   background: var(--gold, #e6c182);
-  color: var(--green-deep, #051a17);
+  color: #051a17;
   font-family: "Baloo 2", sans-serif;
   font-weight: 700;
-  padding: 4px 14px;
+  padding: 6px 16px;
   border-radius: 20px;
   font-size: 13px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
-.tour-banner h1 {
+.banner-title {
   font-family: "Baloo 2", sans-serif;
   font-size: 42px;
-  margin: 14px 0;
+  font-weight: 800;
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7); /* Text Contrast Fix */
+  margin: 10px 0 16px;
+  line-height: 1.2;
 }
 
 .banner-meta {
   display: flex;
   gap: 20px;
   font-family: "Quicksand", sans-serif;
-  color: #c4cdca;
+  color: #e2e8f0 !important;
   font-size: 15px;
+  font-weight: 600;
 }
 
+/* Auto-Play Carousel Styling */
+.carousel-section {
+  background: #ffffff;
+
+  border-radius: 18px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(5, 26, 23, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.section-mini-title {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 20px;
+  color: #051a17;
+  margin-bottom: 14px;
+}
+
+.auto-carousel {
+  position: relative;
+  width: 100%;
+  height: 380px; /* Carousel ki height ko thora barha diya gaya hai */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.carousel-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+  background: #00c853;
+  width: 24px;
+  border-radius: 10px;
+}
+
+/* Grid Layout */
 .tour-content-grid {
   display: grid;
   grid-template-columns: 1fr 380px;
-  gap: 40px;
-  margin-top: 50px;
+  gap: 30px;
+  max-width: 1200px;
+
+  /* Fixing the Overlap Issue: Positive margin aur clean top space */
+  margin-top: 40px !important;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .detail-section {
@@ -54,7 +145,7 @@
 .detail-section h2 {
   font-family: "Baloo 2", sans-serif;
   font-size: 26px;
-  color: var(--green-deep, #051a17);
+  color: #051a17;
   margin-bottom: 16px;
 }
 
@@ -82,8 +173,8 @@
 }
 
 .timeline-day {
-  background: var(--green-deep, #051a17);
-  color: var(--gold, #e6c182);
+  background: #051a17;
+  color: #e6c182;
   font-family: "Baloo 2", sans-serif;
   font-weight: 700;
   padding: 6px 14px;
@@ -112,25 +203,20 @@
   font-size: 14px;
 }
 
-.inc-list li,
-.exc-list li {
-  margin-bottom: 8px;
-}
-
-/* Sidebar & Booking Form */
+/* Sidebar & Booking Form Styles */
 .booking-card {
   position: sticky;
-  top: 100px;
+  top: 110px; /* Fixed navbar height adjustment */
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 12px 32px rgba(5, 26, 23, 0.08);
+  padding: 26px;
+  box-shadow: 0 10px 30px rgba(5, 26, 23, 0.08);
   border: 1px solid rgba(5, 26, 23, 0.08);
 }
 
 .price-header {
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #eee;
 }
 
@@ -141,9 +227,9 @@
 
 .price-val {
   font-family: "Baloo 2", sans-serif;
-  font-size: 32px;
-  color: var(--green-deep, #051a17);
-  margin: 4px 0 0;
+  font-size: 30px;
+  color: #051a17;
+  margin: 2px 0 0;
 }
 
 .price-val span {
@@ -152,7 +238,7 @@
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .form-group label {
@@ -166,21 +252,53 @@
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 12px;
+  padding: 11px 14px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.calculated-price-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 18px 0;
+  text-align: center;
+}
+
+.calculated-price-box span {
+  font-size: 12px;
+  color: #166534;
+  font-weight: 600;
+}
+
+.calculated-price-box h4 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 24px;
+  color: #00c853;
+  margin: 4px 0 0;
+}
+
+.calculated-price-box small {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
 }
 
 .btn-book {
   width: 100%;
   padding: 14px;
-  background: var(--green-accent, #00c853);
+  background: #00c853;
   color: #fff;
   border: none;
   border-radius: 10px;
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -189,8 +307,27 @@
   background: #00a843;
 }
 
+.booking-success {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.btn-book-again {
+  background: transparent;
+  border: 1px solid #00c853;
+  color: #00c853;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 @media (max-width: 992px) {
   .tour-content-grid {
     grid-template-columns: 1fr;
+  }
+  .banner-title {
+    font-size: 32px;
   }
 }

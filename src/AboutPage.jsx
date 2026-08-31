@@ -1,19 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./AboutPage.css";
 import Gallery from "./Gallery";
 
 function AboutPage() {
   return (
     <div className="about-page">
-      {/* Hero Banner */}
-      <section className="about-hero">
+      {/* Standard Hero Banner with Breadcrumbs */}
+      <div className="page-banner">
+        <div className="banner-overlay"></div>
+        <div className="banner-content">
+          <h1>About Us</h1>
+          <div className="breadcrumbs">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <span className="current">About Us</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Intro Section */}
+      {/* <section className="about-hero">
         <div className="about-hero-content">
           <h1>About Bin Waleed Tours</h1>
           <p>
             Leading alpine expeditions & luxury journeys across Pakistan's breathtaking landscapes.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Leadership Messages Section */}
       <section className="leadership-section">
@@ -70,9 +84,9 @@ function AboutPage() {
           </div>
         </div>
       </section>
-<Gallery />
-      </div>
-      
+
+      <Gallery />
+    </div>
   );
 }
 

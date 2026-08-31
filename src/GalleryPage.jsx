@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./GalleryPage.css";
 
 const galleryImages = [
@@ -54,14 +55,21 @@ function GalleryPage() {
 
   return (
     <div className="gallery-page">
-      {/* Top Banner */}
-      <section className="gallery-header">
-        <span className="sub-tag">Exclusive Captures</span>
-        <h1>Pakistan Expedition Gallery</h1>
-      </section>
+      {/* Exact Page Banner Block */}
+      <div className="page-banner">
+        <div className="banner-overlay"></div>
+        <div className="banner-content">
+          <h1>Gallery</h1>
+          <div className="breadcrumbs">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <span className="current">Gallery</span>
+          </div>
+        </div>
+      </div>
 
-      {/* Tabs */}
-      <div className="container">
+      {/* Main Content */}
+      <div className="container" style={{ paddingTop: "40px" }}>
         <div className="filter-bar">
           {categories.map((cat) => (
             <button
