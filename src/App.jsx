@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 
-import Header from "./Header";
+import Header from "./header";
 import Hero from "./Hero";
 import SplitCards from "./SplitCards";
 import Destinations from "./Destinations";
