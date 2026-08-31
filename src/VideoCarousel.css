@@ -1,0 +1,140 @@
+/* ---------- Video Carousel Styles ---------- */
+.video-section {
+  background: var(--gray-bg, #efeeec);
+  padding: 90px 40px;
+  overflow: hidden;
+}
+
+.video-header {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-heading-left h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  color: var(--ink, #0c211e);
+  line-height: 1.15;
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.section-heading-left p {
+  font-family: "Quicksand", sans-serif;
+  color: var(--text-muted, #5c6866);
+  font-size: 16px;
+}
+
+.scroll-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.scroll-controls button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink, #0c211e);
+  background: transparent;
+  color: var(--ink, #0c211e);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.scroll-controls button:hover {
+  background: var(--ink, #0c211e);
+  color: #ffffff;
+}
+
+/* Horizontal Scroll Bar Styles */
+.reels-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 16px;
+  /* Hide scrollbar in Edge/Chrome */
+  scrollbar-width: none;
+}
+
+.reels-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Reel Card Aspect Ratio (9:16 vertical instagram style) */
+.reel-card {
+  flex: 0 0 260px;
+  height: 440px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.reel-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.reel-tag {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.reel-card h4 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .video-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .video-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .reel-card {
+    flex: 0 0 210px;
+    height: 360px;
+  }
+}
