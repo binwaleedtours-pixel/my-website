@@ -70,8 +70,8 @@ function Hero() {
     return () => ctx.revert();
   };
 
+  // 1. Text Reveal & Background Zoom Entrance Animation
   useEffect(() => {
-    // Text Reveal & Background Zoom Entrance
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
@@ -100,6 +100,16 @@ function Hero() {
     return () => ctx.revert();
   }, [currentSlide]);
 
+  // 2. Auto-Play Interval (Har 2 Seconds Baad Auto-Slide Change Fix)
+  useEffect(() => {
+    const autoPlayTimer = setInterval(() => {
+      const nextSlideIndex = (currentSlide + 1) % slidesData.length;
+      switchSlide(nextSlideIndex);
+    }, 2000); // 2000ms = 2 seconds
+
+    return () => clearInterval(autoPlayTimer);
+  }, [currentSlide]);
+
   const activeSlide = slidesData[currentSlide];
 
   return (
@@ -122,7 +132,7 @@ function Hero() {
           <p className="reveal-text">{activeSlide.description}</p>
         </div>
 
-        {/* Fixed Action Buttons (No re-animation to keep solid) */}
+        {/* Fixed Action Buttons */}
         <div className="hero-buttons">
           <a href="#contact" className="btn btn-dark">
             Book Now →
