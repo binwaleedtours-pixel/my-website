@@ -97,7 +97,7 @@ function Expeditions() {
   return (
     <section className="expeditions" id="tours">
       {/* Section Heading */}
-      <div className="section-heading">
+      <div className="section-headings">
         <h2>Featured Expeditions</h2>
         <p>
           Curated itineraries designed to showcase the pinnacle of alpine

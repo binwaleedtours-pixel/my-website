@@ -4,10 +4,9 @@
   position: relative;
 }
 
-/* Base pinned section */
+/* Base pinned section - Height fix for Mobile & Desktop */
 .gallery-pin-section {
   position: relative;
-  height: 100vh;
   width: 100%;
   background: #ffffff;
   display: flex;
@@ -15,14 +14,29 @@
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
+  padding: 60px 0; /* Fixed vh height ki jagah content padding */
 }
 
-.gallery-pin-section .section-heading {
+/* Section Headings */
+.gallery-pin-section .section-headings {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 40px;
+  margin: 0 auto 30px;
   padding: 0 20px;
   flex-shrink: 0;
+}
+
+.gallery-pin-section .section-headings h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 36px;
+  color: #0c211e;
+  margin-bottom: 8px;
+}
+
+.gallery-pin-section .section-headings p {
+  font-family: "Quicksand", sans-serif;
+  color: #4a5568;
+  font-size: 15px;
 }
 
 .gallery-wrapper {
@@ -33,15 +47,16 @@
 
 .gallery-track {
   display: flex;
-  gap: 30px;
-  padding: 0 15vw; /* Generous padding taake initial/final cards jump na karein */
+  gap: 24px;
+  padding: 10px 10vw; /* Padding normalize kar di hai */
   width: max-content;
   will-change: transform;
 }
 
+/* Desktop Cards */
 .gallery-card {
-  width: 380px;
-  height: 460px;
+  width: 320px; /* 380px se reduce kiya taaki space balanced lage */
+  height: 380px; /* 460px se reduce kiya */
   border-radius: 16px;
   overflow: hidden;
   position: relative;
@@ -88,9 +103,40 @@
   font-size: 16px;
 }
 
+/* ---------- Mobile Responsive Fix ---------- */
 @media (max-width: 768px) {
+  .gallery-pin-section {
+    padding: 35px 0; /* Mobile top & bottom extra space clear */
+  }
+
+  .gallery-pin-section .section-headings {
+    margin-bottom: 20px;
+  }
+
+  .gallery-pin-section .section-headings h2 {
+    font-size: 26px;
+  }
+
+  .gallery-pin-section .section-headings p {
+    font-size: 13.5px;
+  }
+
+  .gallery-track {
+    gap: 16px;
+    padding: 5px 6vw;
+  }
+
   .gallery-card {
-    width: 280px;
-    height: 200px;
+    width: 240px;
+    height: 300px; /* Mobile height increase ki hai taaki ratio kharab na ho */
+  }
+
+  .gallery-overlay {
+    opacity: 1; /* Touch devices par title visible rahega */
+    background: linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
   }
 }

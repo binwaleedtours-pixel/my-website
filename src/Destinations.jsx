@@ -5,7 +5,7 @@ function Destinations() {
   return (
     <section className="destinations" id="destinations">
       {/* Section Heading */}
-      <div className="section-heading">
+      <div className="section-headings">
         <h2>Explore Our Popular Destinations</h2>
         <p>
           Unforgettable Journeys to the Heart of Pakistan, Where Every

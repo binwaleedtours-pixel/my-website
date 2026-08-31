@@ -33,9 +33,9 @@ function Gallery() {
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          pin: true,
           scrub: 1,
-          start: "top top",
+          pin: true,
+          start: "top 10%",
           // Scroll length factor (1.5 - 2.0 ideal for smooth ending)
           end: () => `+=${getScrollAmount() * 1.5}`,
           invalidateOnRefresh: true,
@@ -63,7 +63,7 @@ function Gallery() {
   return (
     <div className="gallery-outer-wrapper">
       <section className="gallery-pin-section" ref={sectionRef}>
-        <div className="section-heading">
+        <div className="section-headings">
           <h2>Captured Moments</h2>
           <p>
             A glimpse into the breathtaking landscapes and unforgettable memories
