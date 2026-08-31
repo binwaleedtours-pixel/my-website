@@ -85,14 +85,13 @@ const featureList = [
   },
 ];
 
-// Initial Scaffolding Directions for Exploding Fly-In Effect
 const initialScatterPositions = [
-  { x: -350, y: -250, rotation: -25, scale: 0.6 }, // Top-Left
-  { x: 0, y: -300, rotation: 15, scale: 0.5 },      // Top-Center
-  { x: 350, y: -250, rotation: 25, scale: 0.6 },   // Top-Right
-  { x: -350, y: 250, rotation: -18, scale: 0.6 },  // Bottom-Left
-  { x: 0, y: 300, rotation: -12, scale: 0.5 },     // Bottom-Center
-  { x: 350, y: 250, rotation: 20, scale: 0.6 },    // Bottom-Right
+  { x: -250, y: -180, rotation: -20, scale: 0.7 },
+  { x: 0, y: -220, rotation: 12, scale: 0.6 },
+  { x: 250, y: -180, rotation: 20, scale: 0.7 },
+  { x: -250, y: 180, rotation: -15, scale: 0.7 },
+  { x: 0, y: 220, rotation: -10, scale: 0.6 },
+  { x: 250, y: 180, rotation: 18, scale: 0.7 },
 ];
 
 function Features() {
@@ -101,28 +100,28 @@ function Features() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Pinning + Scroll Driven Assembly Timeline
+      // Smooth Assembly Timeline without Pinning Layout Jump
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top top",
-          end: "+=1200", // Scroll Distance
-          scrub: 1.2,    // Smooth Scroll Sync
-          pin: true,     // Screen Pinning while animating
-          anticipatePin: 1,
+          start: "top 75%",    // Screen 75% scroll hone par trigger hoga
+          end: "bottom 85%",   // Smooth natural transition
+          scrub: 1.2,          // Smooth scroll lag
+          pin: false,          // Fixed header overlap aur white spacing resolve karne ke liye false rakha hai
         },
       });
 
-      // Header Fade & Scale
+      // Header Fade & Entry
       tl.from(".features-header", {
         opacity: 0,
-        y: -40,
-        scale: 0.9,
+        y: -30,
+        scale: 0.95,
         duration: 0.5,
       });
 
-      // Animate cards from scattered off-grid locations to zeroed grid position
+      // Scatter cards reveal
       cardsRef.current.forEach((card, index) => {
+        if (!card) return;
         const initial = initialScatterPositions[index];
 
         tl.fromTo(
@@ -143,15 +142,17 @@ function Features() {
             ease: "power2.out",
             duration: 1,
           },
-          "-=0.4" // Slight overlap stagger
+          "-=0.4"
         );
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
-  // Spotlight Mouse Move Effect (Card Level)
   const handleMouseMove = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
