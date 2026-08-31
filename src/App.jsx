@@ -59,7 +59,7 @@ function App() {
         <Route path="/tour/:slug" element={<TourDetailPage />} />
 
         {/* Dedicated Pages */}
-        <Route path="/aboutPage" element={<AboutPage />} />
+        <Route path="/AboutPage" element={<AboutPage />} />
         <Route path="/galleryPage" element={<GalleryPage />} />
         <Route path="/tours" element={<Expeditions />} />
         <Route path="/contact" element={<Contact />} />
