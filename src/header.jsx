@@ -8,8 +8,7 @@ function Header() {
       <div className="nav-wrap">
         {/* Logo Section */}
         <Link to="/" className="logo">
-          <img src="/public/logo.jpg" alt="Company Logo" className="logo-img" />
-
+<img src="/logo.jpg" alt="Company Logo" className="logo-img" />
         </Link>
 
         {/* Navigation Links */}
