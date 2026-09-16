@@ -5,25 +5,25 @@ import "./Hero.css";
 const slidesData = [
   {
     id: 1,
-    title: "Discover the Majestic North",
+    title: "Turning Pakistan’s Destinations into Unforgettable Experiences.",
     description:
-      "Embark on unforgettable journeys through Pakistan's most serene valleys and rugged peaks.",
+      "Embark on unforgettable journeys through Pakistan's most serene valleys, Lakes and rugged peaks.",
     bgImage:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
   },
   {
     id: 2,
-    title: "Explore Hunza & Skardu",
+    title: "Where Every Journey Tells a Story",
     description:
-      "Witness turquoise lakes, high altitude deserts, and snow-capped giant peaks of the Karakoram.",
+      "Travel through majestic mountains, scenic valleys, and hidden gems while creating memories with a family environment  that last a lifetime.",
     bgImage:
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80",
   },
   {
     id: 3,
-    title: "Chasing Alpine Dreams",
+    title: "Experience Pakistan Like Never Before",
     description:
-      "Join curated wilderness trekking, luxury camping, and authentic northern culture tours.",
+      "Discover breathtaking destinations, unforgettable adventures, and thoughtfully planned journeys with a registered tourism company.",
     bgImage:
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
   },

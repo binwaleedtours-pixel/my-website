@@ -43,48 +43,49 @@ const UserGroupIcon = () => (
   </svg>
 );
 
+// File Path: src/data/featuresData.js (or wherever your featureList is located)
+
 const featureList = [
   {
     id: 1,
     icon: <BuildingIcon />,
-    title: "Luxury Accommodation & Stays",
-    description: "Handpicked top-rated hotels, cozy resorts, and private family/couple rooms for complete privacy and ultimate mountain comfort.",
+    title: "Quality Hotels & Comfortable Stays",
+    description: "Enjoy carefully selected accommodations with comfortable rooms and suitable options for families, couples, and groups.",
     badge: "5 Star Comfort"
   },
   {
     id: 2,
     icon: <CakeIcon />,
-    title: "Hygienic Delicious Meals",
-    description: "Freshly prepared quality breakfast and dinner included daily to keep you fully energized.",
+    title: "Fresh & Quality Meals",
+    description: "Enjoy fresh, hygienic meals throughout your trip, with selected packages including daily breakfast and dinner.",
   },
   {
     id: 3,
     icon: <TruckIcon />,
-    title: "Comfortable Travel & 4x4",
-    description: "Modern AC vehicles & expert mountain drivers for off-road tracks.",
+    title: "Comfortable Transport",
+    description: "Travel with comfortable vehicles and experienced drivers familiar with the mountain roads and northern routes.",
   },
   {
     id: 4,
     icon: <MapPinIcon />,
-    title: "15+ Iconic Sightseeing Spots",
-    description: "Covering maximum destinations, serene lakes, and hidden valleys in a single seamless itinerary.",
+    title: "Complete Tour Experience",
+    description: "Explore iconic attractions, scenic valleys, lakes, viewpoints, and hidden gems through thoughtfully planned itineraries.",
     badge: "All-Inclusive"
   },
   {
     id: 5,
     icon: <HeartIcon />,
-    title: "Couple & Family Environment",
-    description: "Safe, respectful, and private environment curated specially for loved ones.",
+    title: "Family & Couple Friendly",
+    description: "We create a respectful and comfortable travel environment where families, couples, and groups can enjoy their journey with peace of mind.",
   },
   {
     id: 6,
     icon: <UserGroupIcon />,
-    title: "24/7 Expert Tour Guides",
-    description: "Dedicated managers making your journey smooth, safe, and completely hassle-free.",
+    title: "Dedicated Tour Support",
+    description: "Our experienced tour managers and guides stay connected throughout your trip to help keep your journey smooth and hassle-free.",
     badge: "24/7 Support"
   },
 ];
-
 const initialScatterPositions = [
   { x: -250, y: -180, rotation: -20, scale: 0.7 },
   { x: 0, y: -220, rotation: 12, scale: 0.6 },
@@ -167,11 +168,12 @@ function Features() {
     <section className="features-section" id="why-us" ref={containerRef}>
       <div className="features-container">
         <div className="features-header">
-          <span className="sub-title">EXCELLENCE IN TRAVEL</span>
-          <h2>Why Travel With Us</h2>
+          <span className="sub-title">TRAVEL WITH CONFIDENCE</span>
+          <h2>Why Choose Bin Waleed Tours
+</h2>
           <p>
-            We take care of every detail so you can focus on making unforgettable
-            memories across Pakistan.
+           From planning your trip to reaching your destination, we focus on the details that make your journey comfortable, enjoyable, and memorable.
+
           </p>
         </div>
 

@@ -9,10 +9,10 @@ function AboutSection() {
         {/* Section Header */}
         <div className="section-heading">
           <span className="badge-pill">DISCOVER OUR STORY</span>
-          <h2>Crafting Alpine Adventures Across Pakistan</h2>
+          <h2>Turning Travel Dreams Into Real Journeys
+</h2>
           <p>
-            Bin Waleed Tours turns your dream mountain getaways into safe, 
-            luxurious, and deeply authentic local experiences.
+         Bin Waleed Tours is built for those who want to see more, explore further, and experience Pakistan beyond the usual routes.
           </p>
         </div>
 
@@ -20,28 +20,31 @@ function AboutSection() {
         <div className="about-card">
           {/* Content Side */}
           <div className="about-text">
-            <span className="accent-tag">ESTABLISHED EXPERTISE</span>
+            <span className="accent-tag">YOUR JOURNEY, OUR PASSION
+</span>
             <h3>
-              From Majestic Peaks To Hidden Valleys, We Elevate Every Step Of Your Journey.
+From Famous Destinations To Hidden Gems, We Make Every Journey Worth Remembering.
             </h3>
             <p className="about-description">
-              We specialize in tailor-made expeditions, serene family retreats, and high-altitude treks. With expert local guides, luxury 4x4 transport, and handpicked premium stays, we take care of all details so you can immerse in nature.
-            </p>
+
+From the breathtaking valleys of Naran and Kashmir to the majestic landscapes of Hunza, Skardu, Swat, and Fairy Meadows, we bring together carefully planned tours, comfortable travel, and memorable experiences.
+
+Whether you're travelling with family, friends, or looking for your next adventure, we take care of the journey so you can focus on the moments that matter.            </p>
 
             {/* Key Metrics Grid */}
             <div className="about-stats">
               <div className="stat-item">
-                <span className="stat-number">100+</span>
+                <span className="stat-number">70+</span>
                 <span className="stat-label">Guided Expeditions</span>
               </div>
               <div className="stat-divider" />
               <div className="stat-item">
-                <span className="stat-number">5.0 ★</span>
+                <span className="stat-number">4.9 ★</span>
                 <span className="stat-label">Verified Rating</span>
               </div>
               <div className="stat-divider" />
               <div className="stat-item">
-                <span className="stat-number">5k+</span>
+                <span className="stat-number">2.5k+</span>
                 <span className="stat-label">Happy Explorers</span>
               </div>
             </div>

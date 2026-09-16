@@ -39,7 +39,7 @@ function Home() {
     <>
       <Hero />
       <SplitCards />
-      <Destinations />
+      {/* <Destinations /> */}
       <Expeditions />
       <Gallery />
       <AboutSection />
