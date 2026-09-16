@@ -147,7 +147,14 @@ function Contact() {
                   <option value="Fairy Meadows">Fairy Meadows</option>
                   <option value="Swat Valley">Swat Valley</option>
                   <option value="Naran Valley">Naran Valley</option>
+
+                  <option value="Khasmir">Khasmir</option>
+                  <option value="Kumrat Jhazbanda">Kumrat Jhazbanda</option>
+                                    <option value="Kumrat Jhazbanda">Astor Minimerg</option>
+
+
                   <option value="Custom Tour">Custom Private Tour</option>
+                  
                 </select>
               </div>
 
@@ -173,7 +180,7 @@ function Contact() {
         <div className="map-container">
           <iframe
             title="Bin Waleed Tours Location"
-            src="https://maps.google.com/maps?q=Liberty%20roundabout,%20Gulberg,%20Lahore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.app.goo.gl/N6NUn1bPJQ3NsVDV9"
             width="100%"
             height="400"
             style={{ border: 0 }}
