@@ -19,20 +19,33 @@ export const toursData = [
       "Visit to Babusar Top (13,690 ft)",
       "Riverside rafting at Kunhar River",
     ],
-    // itinerary: [
-    //   {
-    //     day: "Day 1",
-    //     title: "Islamabad to Naran",
-    //     desc: "Departure via Hazara Motorway.",
-    //   },
-    //   {
-    //     day: "Day 2",
-    //     title: "Saif-ul-Malook & Babusar Top",
-    //     desc: "4x4 Jeep ride to Saif-ul-Malook lake.",
-    //   },
-    // ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Islamabad to Naran",
+        desc: "Departure via Hazara Motorway.",
+      },
+      {
+        day: "Day 2",
+        title: "Saif-ul-Malook & Babusar Top",
+        desc: "4x4 Jeep ride to Saif-ul-Malook lake.",
+      },
+    ],
     included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
     excluded: ["Jeep charges", "Personal shopping"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 2,
@@ -48,15 +61,28 @@ export const toursData = [
     overview:
       "Discover Switzerland of the East with lush green valleys, Kalam, and Mahodand Lake.",
     highlights: ["Malam Jabba Ski Resort", "Mahodand Lake Jeep Ride"],
-    // itinerary: [
-    //   {
-    //     day: "Day 1",
-    //     title: "Islamabad to Malam Jabba",
-    //     desc: "Chairlift ride at Malam Jabba.",
-    //   },
-    // ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Islamabad to Malam Jabba",
+        desc: "Chairlift ride at Malam Jabba.",
+      },
+    ],
     included: ["Transport", "Hotel Accommodation"],
     excluded: ["Entry tickets"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 3,
@@ -71,15 +97,28 @@ export const toursData = [
     overview:
       "Journey into the heaven on earth featuring Kutton Waterfall, Keran, and Arang Kel.",
     highlights: ["Chairlift to Arang Kel", "Kutton Waterfall"],
-    // itinerary: [
-    //   {
-    //     day: "Day 1",
-    //     title: "Islamabad to Kutton",
-    //     desc: "Drive along Neelum River.",
-    //   },
-    // ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Islamabad to Kutton",
+        desc: "Drive along Neelum River.",
+      },
+    ],
     included: ["Luxury Coaster", "Hotel Stay"],
     excluded: ["Personal expenses"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 4,
@@ -93,15 +132,28 @@ export const toursData = [
     heroImage: "https://loremflickr.com/1200/600/forest,waterfall,green",
     overview: "Trek into untouched alpine wilderness and dense pine forests.",
     highlights: ["Kumrat Waterfall", "Jhazbanda Meadows"],
-    // itinerary: [
-    //   {
-    //     day: "Day 1",
-    //     title: "Islamabad to Thal",
-    //     desc: "Drive to Thal Village.",
-    //   },
-    // ],
+    itinerary: [
+      {
+        day: "Day 1",
+        title: "Islamabad to Thal",
+        desc: "Drive to Thal Village.",
+      },
+    ],
     included: ["4x4 Jeeps", "Camping"],
     excluded: ["Personal luggage porters"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 5,
@@ -116,11 +168,24 @@ export const toursData = [
     overview:
       "Experience Karakoram Highway, historic forts, Attabad Lake, and Khunjerab Pass.",
     highlights: ["Khunjerab Pass", "Attabad Lake Boating"],
-    // itinerary: [
-    //   { day: "Day 1", title: "Islamabad to Hunza", desc: "Drive along KKH." },
-    // ],
+    itinerary: [
+      { day: "Day 1", title: "Islamabad to Hunza", desc: "Drive along KKH." },
+    ],
     included: ["Grand Cabin", "Hotels"],
     excluded: ["Boating fees"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 6,
@@ -134,11 +199,24 @@ export const toursData = [
     heroImage: "https://loremflickr.com/1200/600/cabin,snowmountain,meadow",
     overview: "Stand face to face with Nanga Parbat from wooden cabins.",
     highlights: ["Raikot Jeep Safari", "Fairy Meadows Hike"],
-    // itinerary: [
-    //   { day: "Day 1", title: "Drive to Raikot", desc: "Overnight drive." },
-    // ],
+    itinerary: [
+      { day: "Day 1", title: "Drive to Raikot", desc: "Overnight drive." },
+    ],
     included: ["Jeep Rent", "Cottages"],
     excluded: ["Porters"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 7,
@@ -153,11 +231,24 @@ export const toursData = [
       "https://loremflickr.com/1200/600/skardu,valley,desert,mountains",
     overview: "Discover Shangrila Lake, Cold Desert, and Deosai Plains.",
     highlights: ["Deosai Plains", "Katpana Cold Desert"],
-    // itinerary: [
-    //   { day: "Day 1", title: "Islamabad to Skardu", desc: "Scenic drive." },
-    // ],
+    itinerary: [
+      { day: "Day 1", title: "Islamabad to Skardu", desc: "Scenic drive." },
+    ],
     included: ["Coaster", "Deosai Jeeps"],
     excluded: ["Personal expenses"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
   {
     id: 8,
@@ -171,10 +262,23 @@ export const toursData = [
     heroImage: "https://loremflickr.com/1200/600/hunza,skardu,greenvalley,lake",
     overview: "The ultimate 8-day expedition covering Hunza and Skardu.",
     highlights: ["Full Hunza & Skardu tour"],
-    // itinerary: [
-    //   { day: "Day 1", title: "Arrival in Hunza", desc: "Explore Karimabad." },
-    // ],
+    itinerary: [
+      { day: "Day 1", title: "Arrival in Hunza", desc: "Explore Karimabad." },
+    ],
     included: ["Transport", "Hotels", "Jeeps"],
     excluded: ["Shopping"],
+    tourDetails: {
+      departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
+      services: {
+        accommodation: "According To Your Package",
+        food: "03 Breakfasts & 02 Dinners",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
+      },
+      importantNotes: [
+        "Only Blood Relations And Married Couples Are Allowed To Share a Room.",
+        "Carry Your ID Card With You At All Time.",
+        "For Further Details See The Attached PDF File",
+      ],
+    },
   },
 ];

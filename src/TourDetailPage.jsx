@@ -64,7 +64,7 @@ function TourDetailPage() {
 
   const unitPrice = getNumericPrice(tour.price);
   
-  // Couple surcharge (Optional: e.g. Couple room extra cost, ya direct base calculation)
+  // Couple surcharge
   const coupleExtra = formData.roomType === "Couple (Private Room)" ? 4000 : 0;
   const totalPrice = (unitPrice * Number(formData.persons)) + (formData.roomType === "Couple (Private Room)" ? coupleExtra : 0);
 
@@ -156,22 +156,41 @@ function TourDetailPage() {
             </section>
           )}
 
-          {/* {tour.itinerary && (
+          {/* About This Tour: Departures & Services Section */}
+          {tour.tourDetails && (
             <section className="detail-section">
-              <h2>Day-by-Day Itinerary</h2>
-              <div className="itinerary-timeline">
-                {tour.itinerary.map((step, idx) => (
-                  <div key={idx} className="timeline-item">
-                    <div className="timeline-day">{step.day}</div>
-                    <div className="timeline-body">
-                      <h4>{step.title}</h4>
-                      <p>{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <h2>About This Tour</h2>
+              
+              <div className="tour-info-block">
+                <h3>🚀 Departure Cities</h3>
+                <div className="badge-grid">
+                  {tour.tourDetails.departures?.map((dep, idx) => (
+                    <span key={idx} className="info-badge">{dep}</span>
+                  ))}
+                </div>
               </div>
+
+              <div className="tour-info-block">
+                <h3>🛎️ Services Included</h3>
+                <ul className="services-list">
+                  <li><strong>Accommodation:</strong> {tour.tourDetails.services?.accommodation}</li>
+                  <li><strong>Food:</strong> {tour.tourDetails.services?.food}</li>
+                  <li><strong>Transportation:</strong> {tour.tourDetails.services?.transportation}</li>
+                </ul>
+              </div>
+
+              {tour.tourDetails.importantNotes && (
+                <div className="important-notes-box">
+                  <h3>⚠️ Important Guidelines</h3>
+                  <ul>
+                    {tour.tourDetails.importantNotes.map((note, idx) => (
+                      <li key={idx}>• {note}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </section>
-          )} */}
+          )}
 
           <section className="detail-section grid-split">
             <div>
