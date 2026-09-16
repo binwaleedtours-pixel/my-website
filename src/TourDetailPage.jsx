@@ -156,22 +156,22 @@ function TourDetailPage() {
             </section>
           )}
 
-          {tour.itinerary && (
-            // <section className="detail-section">
-            //   <h2>Day-by-Day Itinerary</h2>
-            //   <div className="itinerary-timeline">
-            //     {tour.itinerary.map((step, idx) => (
-            //       <div key={idx} className="timeline-item">
-            //         <div className="timeline-day">{step.day}</div>
-            //         <div className="timeline-body">
-            //           <h4>{step.title}</h4>
-            //           <p>{step.desc}</p>
-            //         </div>
-            //       </div>
-            //     ))}
-            //   </div>
-            // </section>
-          )}
+          {/* {tour.itinerary && (
+            <section className="detail-section">
+              <h2>Day-by-Day Itinerary</h2>
+              <div className="itinerary-timeline">
+                {tour.itinerary.map((step, idx) => (
+                  <div key={idx} className="timeline-item">
+                    <div className="timeline-day">{step.day}</div>
+                    <div className="timeline-body">
+                      <h4>{step.title}</h4>
+                      <p>{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )} */}
 
           <section className="detail-section grid-split">
             <div>
