@@ -123,7 +123,6 @@ function AboutPage() {
               <div className="leader-info">
                 <h4>Shakaib Ali</h4>
                 <span>Chief Executive Officer, Bin Waleed Tours</span>
-                              <span className="reg-number">NTN No.: 6808587-0</span>
 
               </div>
             </div>
@@ -143,6 +142,8 @@ function AboutPage() {
               <div className="reg-icon">🏛️</div>
               <h3>FBR Registered</h3>
               <p>Registered with the Federal Board of Revenue (FBR) ensuring full financial compliance and legal transparency.</p>
+                                            <span className="reg-number">NTN No.: 6808587-0</span>
+
             </div>
             <div className="reg-card">
               <div className="reg-icon">📜</div>
