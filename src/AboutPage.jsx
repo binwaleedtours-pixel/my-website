@@ -149,7 +149,7 @@ function AboutPage() {
               <div className="reg-icon">📜</div>
               <h3>LCCI Member</h3>
               <p>Proud member of the Lahore Chamber of Commerce & Industry (LCCI).</p>
-              <span className="reg-number">Membership No.: 142915-4</span>
+              <span className="reg-number">Membership No.: 142915-A</span>
             </div>
           </div>
         </div>
