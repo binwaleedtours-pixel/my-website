@@ -56,7 +56,9 @@ function Contact() {
                 <span className="icon">📍</span>
                 <div>
                   <h5>Office Location</h5>
-                  <p>Big city plaza, Liberty roundabout, Gulberg, Lahore</p>
+                  <p>26 F/F, Quaid Commercial, Near Eiffel Tower, Bahria Town Lahore </p>
+                                    <p>37AC E-BLock Muhafiz Town, Lahore </p>
+
                 </div>
               </div>
 
@@ -64,7 +66,9 @@ function Contact() {
                 <span className="icon">📞</span>
                 <div>
                   <h5>Phone / WhatsApp</h5>
-                  <p>+92 (317) 7773141</p>
+                  <p>+923028908761</p>
+                                    <p>+923157764146</p>
+
                 </div>
               </div>
 
@@ -72,7 +76,7 @@ function Contact() {
                 <span className="icon">✉️</span>
                 <div>
                   <h5>Email Address</h5>
-                  <p>support@travelwithzunair.pk</p>
+                  <p>binwaleedtours@gmail.com</p>
                 </div>
               </div>
 
@@ -89,17 +93,14 @@ function Contact() {
             <div className="social-links-wrap">
               <h5>Follow Our Journeys</h5>
               <div className="social-icons">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <a href="https://www.facebook.com/binwaleedtours" target="_blank" rel="noreferrer" aria-label="Facebook">
                   <span>FB</span>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/binwaleedtours/" target="_blank" rel="noreferrer" aria-label="Instagram">
                   <span>IG</span>
                 </a>
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@binwaleedtours" target="_blank" rel="noreferrer" aria-label="TikTok">
                   <span>TT</span>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
-                  <span>YT</span>
                 </a>
               </div>
             </div>
