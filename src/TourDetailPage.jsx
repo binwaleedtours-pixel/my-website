@@ -106,7 +106,7 @@ function TourDetailPage() {
           <h1 className="banner-title">{tour.title}</h1>
           <div className="banner-meta">
             <span>⏱️ {tour.duration}</span>
-            <span>👥 {tour.groupSize || "12-18 People"}</span>
+            <span>👥 {tour.groupSize || "20-22 People"}</span>
             <span>⭐ {tour.rating || "4.9"} ({tour.reviewsCount || 29} reviews)</span>
           </div>
         </div>
