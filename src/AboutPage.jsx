@@ -123,6 +123,8 @@ function AboutPage() {
               <div className="leader-info">
                 <h4>Shakaib Ali</h4>
                 <span>Chief Executive Officer, Bin Waleed Tours</span>
+                              <span className="reg-number">NTN No.: 6808587-0</span>
+
               </div>
             </div>
           </div>
