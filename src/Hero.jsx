@@ -5,7 +5,7 @@ import "./Hero.css";
 const slidesData = [
   {
     id: 1,
-    title: "Turning Pakistan’s Destinations into Unforgettable Experiences.",
+    title: "Turning Destinations into Memories.",
     description:
       "Embark on unforgettable journeys through Pakistan's most serene valleys, Lakes and rugged peaks.",
     bgImage:
