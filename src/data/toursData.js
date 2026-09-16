@@ -13,7 +13,7 @@ export const toursData = [
     reviewsCount: 34,
     heroImage: "https://loremflickr.com/1200/600/naran,valley,river",
     overview:
-      "Explore the scenic beauty of Kaghan Valley, the legendary Saif-ul-Malook lake, Babusar Top, and Lulusar Lake.",
+      "Explore the scenic beauty of Naran Valley andKaghan Valley, the legendary Saif-ul-Malook lake, Babusar Top, Gittidas Meadows, and Lulusar Lake.",
     highlights: [
       "Jeep safari to Lake Saif-ul-Malook",
       "Visit to Babusar Top (13,690 ft)",
@@ -59,7 +59,7 @@ export const toursData = [
     reviewsCount: 29,
     heroImage: "https://loremflickr.com/1200/600/swat,valley,river",
     overview:
-      "Discover Switzerland of the East with lush green valleys, Kalam, and Mahodand Lake.",
+      "Discover Switzerland of the East with lush green valleys, Swat, Kalam, Malam Jabba and Mahodand Lake.",
     highlights: ["Malam Jabba Ski Resort", "Mahodand Lake Jeep Ride"],
     itinerary: [
       {
@@ -68,8 +68,8 @@ export const toursData = [
         desc: "Chairlift ride at Malam Jabba.",
       },
     ],
-    included: ["Transport", "Hotel Accommodation"],
-    excluded: ["Entry tickets"],
+     included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -95,7 +95,7 @@ export const toursData = [
     reviewsCount: 51,
     heroImage: "https://loremflickr.com/1200/600/kashmir,valley,mountains",
     overview:
-      "Journey into the heaven on earth featuring Kutton Waterfall, Keran, and Arang Kel.",
+      "Journey into the heaven on earth featuring Dhani Waterfall, Keran, Sharda, LOC view point and Arang Kel.",
     highlights: ["Chairlift to Arang Kel", "Kutton Waterfall"],
     itinerary: [
       {
@@ -104,8 +104,8 @@ export const toursData = [
         desc: "Drive along Neelum River.",
       },
     ],
-    included: ["Luxury Coaster", "Hotel Stay"],
-    excluded: ["Personal expenses"],
+      included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -130,7 +130,7 @@ export const toursData = [
     rating: 4.7,
     reviewsCount: 22,
     heroImage: "https://loremflickr.com/1200/600/forest,waterfall,green",
-    overview: "Trek into untouched alpine wilderness and dense pine forests.",
+    overview: "Trek into untouched alpine wilderness, Katora Lake and dense pine forests.",
     highlights: ["Kumrat Waterfall", "Jhazbanda Meadows"],
     itinerary: [
       {
@@ -139,8 +139,8 @@ export const toursData = [
         desc: "Drive to Thal Village.",
       },
     ],
-    included: ["4x4 Jeeps", "Camping"],
-    excluded: ["Personal luggage porters"],
+      included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -171,8 +171,8 @@ export const toursData = [
     itinerary: [
       { day: "Day 1", title: "Islamabad to Hunza", desc: "Drive along KKH." },
     ],
-    included: ["Grand Cabin", "Hotels"],
-    excluded: ["Boating fees"],
+      included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -202,8 +202,8 @@ export const toursData = [
     itinerary: [
       { day: "Day 1", title: "Drive to Raikot", desc: "Overnight drive." },
     ],
-    included: ["Jeep Rent", "Cottages"],
-    excluded: ["Porters"],
+     included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -229,13 +229,13 @@ export const toursData = [
     reviewsCount: 38,
     heroImage:
       "https://loremflickr.com/1200/600/skardu,valley,desert,mountains",
-    overview: "Discover Shangrila Lake, Cold Desert, and Deosai Plains.",
+    overview: "Discover Shangrila Lake, Shigar Fort, Upper Kachura Lake, Cold Desert, and Deosai Plains.",
     highlights: ["Deosai Plains", "Katpana Cold Desert"],
     itinerary: [
       { day: "Day 1", title: "Islamabad to Skardu", desc: "Scenic drive." },
     ],
-    included: ["Coaster", "Deosai Jeeps"],
-    excluded: ["Personal expenses"],
+     included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
@@ -260,13 +260,13 @@ export const toursData = [
     rating: 5.0,
     reviewsCount: 74,
     heroImage: "https://loremflickr.com/1200/600/hunza,skardu,greenvalley,lake",
-    overview: "The ultimate 8-day expedition covering Hunza and Skardu.",
+    overview: "Discover Shangrila Lake, Shigar Fort, Upper Kachura Lake, Cold Desert, Sheosar Lake, Sadpara Lake, Passu Cones, Hussani Bridge, Deosai Plains, RakaPoshi and Khunjerab Pass.",
     highlights: ["Full Hunza & Skardu tour"],
     itinerary: [
       { day: "Day 1", title: "Arrival in Hunza", desc: "Explore Karimabad." },
     ],
-    included: ["Transport", "Hotels", "Jeeps"],
-    excluded: ["Shopping"],
+    included: ["Coaster Transport", "Hotel Stay", "Breakfast & Dinner"],
+    excluded: ["Jeep charges", "Personal shopping"],
     tourDetails: {
       departures: ["Lahore", "Sahiwal", "Faisalabad", "Islamabad"],
       services: {
