@@ -181,7 +181,7 @@ function Contact() {
 <div className="map-container">
   <iframe
     title="Bin Waleed Tours Location"
-    src="https://www.google.com/maps?q=26+F%2FF,+Quaid+Commercial,+Near+Eiffel+Tower,+Bahria+Town,+Lahore&output=embed"
+    src="https://www.google.com/maps?q=26+F%2FF,+Quaid+Commercial,+Near+Eiffel+Tower,+Bahria+Town,+Lahore&output=embed&z=15"
     width="100%"
     height="400"
     style={{ border: 0 }}

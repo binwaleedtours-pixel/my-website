@@ -1,0 +1,120 @@
+.terms-page-wrapper {
+  width: 100%;
+}
+
+/* ---------- Main Terms Section ---------- */
+.terms-section {
+  background: var(--gray-bg, #efeeec);
+  padding: 80px 40px 100px;
+}
+
+.terms-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.terms-card {
+  background: #ffffff;
+  padding: 60px 50px;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.terms-intro {
+  font-family: "Quicksand", sans-serif;
+  font-size: 15.5px;
+  color: #333333;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eae5df;
+}
+
+.terms-content-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.terms-block h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 22px;
+  color: var(--ink, #0c211e);
+  margin-bottom: 12px;
+}
+
+.terms-block p {
+  font-family: "Quicksand", sans-serif;
+  font-size: 15px;
+  color: #5c6866;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.terms-block ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.terms-block ul li {
+  font-family: "Quicksand", sans-serif;
+  font-size: 14.5px;
+  color: #5c6866;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+/* Contact Box inside Terms Page */
+.terms-contact-box {
+  background: #faf9f7;
+  border: 1px solid #e3e1dd;
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.terms-contact-box p {
+  margin-bottom: 6px;
+  color: var(--ink, #0c211e);
+}
+
+.terms-contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Back to Home Button */
+.terms-footer-link {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #eae5df;
+  text-align: center;
+}
+
+.btn-back-home {
+  display: inline-block;
+  background: var(--green-deep, #051a17);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-back-home:hover {
+  background: #0a332e;
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .terms-section {
+    padding: 50px 20px;
+  }
+
+  .terms-card {
+    padding: 35px 24px;
+  }
+}

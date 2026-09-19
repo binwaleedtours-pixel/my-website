@@ -15,14 +15,15 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 
 // Page Views
+import CustomizeTour from "./CustomizeTour";
 import AboutPage from "./AboutPage";
 import GalleryPage from "./GalleryPage";
 import TourDetailPage from "./TourDetailPage";
-
-// GSAP Preloader Component (If in components folder, adjust path accordingly e.g. "./components/Preloader")
+import Privacypolicy from "./Privacypolicy";
+import Termandconditions from "./Termandconditions";
+// GSAP Preloader Component
 import Preloader from "./Preloader"; 
 
-// Page switch hone par automatically screen ko top par scroll karne ke liye
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -33,13 +34,11 @@ function ScrollToTop() {
   return null;
 }
 
-// Single Page View (Home Landing Page)
 function Home() {
   return (
     <>
       <Hero />
       <SplitCards />
-      {/* <Destinations /> */}
       <Expeditions />
       <Gallery />
       <AboutSection />
@@ -50,7 +49,6 @@ function Home() {
 }
 
 function App() {
-  // Check if loader has already run in current session
   const [loading, setLoading] = useState(() => {
     return !sessionStorage.getItem("hasVisited");
   });
@@ -62,24 +60,21 @@ function App() {
 
   return (
     <>
-      {/* GSAP Rolling Text Preloader */}
       {loading && <Preloader onComplete={handlePreloaderComplete} />}
 
       <ScrollToTop />
       <Header />
 
       <Routes>
-        {/* Main Home Landing Page */}
         <Route path="/" element={<Home />} />
-
-        {/* Dynamic Tour Details Route */}
         <Route path="/tour/:slug" element={<TourDetailPage />} />
-
-        {/* Dedicated Pages */}
         <Route path="/AboutPage" element={<AboutPage />} />
         <Route path="/galleryPage" element={<GalleryPage />} />
         <Route path="/tours" element={<Expeditions />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacypolicy" element={<Privacypolicy />} />
+        <Route path="/termandconditions" element={<Termandconditions />} />
+        <Route path="/customizetours" element={<CustomizeTour />} />
       </Routes>
 
       <Footer />

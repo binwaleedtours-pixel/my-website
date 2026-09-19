@@ -8,7 +8,6 @@ const galleryImages = [
     title: "Hunza Valley Autumn",
     category: "Valleys",
     url: "https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
   },
   {
     id: 2,
@@ -42,52 +41,33 @@ const galleryImages = [
   },
 ];
 
-const categories = ["All", "Valleys", "Trekking", "Lakes", "Camping"];
-
 function GalleryPage() {
-  const [activeTab, setActiveTab] = useState("All");
   const [selectedImg, setSelectedImg] = useState(null);
-
-  const filteredImages =
-    activeTab === "All"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeTab);
 
   return (
     <div className="gallery-page">
-      {/* Exact Page Banner Block */}
-      <div className="page-banner">
+      {/* ---------- Top Page Banner ---------- */}
+      <div className="top-page-banner">
         <div className="banner-overlay"></div>
-        <div className="banner-content">
-          <h1>Gallery</h1>
-          <div className="breadcrumbs">
-            <Link to="/">Home</Link>
-            <span>/</span>
-            <span className="current">Gallery</span>
-          </div>
+        <div className="banner-inner">
+          <span className="page-category">Explore Pakistan</span>
+          <h1 className="page-title">Gallery</h1>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="container" style={{ paddingTop: "40px" }}>
-        <div className="filter-bar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`tab-btn ${activeTab === cat ? "active" : ""}`}
-              onClick={() => setActiveTab(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+      {/* ---------- Gallery Header ---------- */}
+      <div className="gallery-header">
+        <span className="sub-tag">Visual Journey</span>
+        <h1>Captured Moments</h1>
+      </div>
 
-        {/* Asymmetrical Magazine Grid */}
+      {/* ---------- Main Content / Grid ---------- */}
+      <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
         <div className="magazine-grid">
-          {filteredImages.map((img, index) => (
+          {galleryImages.map((img, index) => (
             <div
               key={img.id}
-              className={`gallery-card ${img.featured ? "featured" : ""}`}
+              className="gallery-card"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedImg(img)}
             >
@@ -102,11 +82,15 @@ function GalleryPage() {
         </div>
       </div>
 
-      {/* Lightbox Pop-up */}
+      {/* ---------- Lightbox Pop-up ---------- */}
       {selectedImg && (
         <div className="lightbox-modal" onClick={() => setSelectedImg(null)}>
           <div className="lightbox-wrapper" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setSelectedImg(null)}>
+            <button
+              className="close-btn"
+              onClick={() => setSelectedImg(null)}
+              aria-label="Close"
+            >
               ✕
             </button>
             <img src={selectedImg.url} alt={selectedImg.title} />

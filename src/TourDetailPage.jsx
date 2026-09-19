@@ -23,7 +23,7 @@ function TourDetailPage() {
   const [bookingStatus, setBookingStatus] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  // Fallback Carousel Images (agar database me gallery images na ho)
+  // Fallback Carousel Images
   const galleryImages = tour?.gallery || [
     tour?.heroImage || tour?.image,
     tour?.image || tour?.heroImage,
@@ -36,7 +36,7 @@ function TourDetailPage() {
     if (!galleryImages || galleryImages.length <= 1) return;
     const interval = setInterval(() => {
       setActiveSlide((prevIndex) => (prevIndex + 1) % galleryImages.length);
-    }, 3500); // Change image every 3.5s
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [galleryImages]);
@@ -62,20 +62,42 @@ function TourDetailPage() {
     return parseInt(num, 10) || 0;
   };
 
+  // FIXED PRICE CALCULATION LOGIC (Surcharge removed, direct multiplication):
   const unitPrice = getNumericPrice(tour.price);
-  
-  // Couple surcharge
-  const coupleExtra = formData.roomType === "Couple (Private Room)" ? 4000 : 0;
-  const totalPrice = (unitPrice * Number(formData.persons)) + (formData.roomType === "Couple (Private Room)" ? coupleExtra : 0);
+  const totalPrice = unitPrice * Number(formData.persons);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === "roomType") {
+      // Agar user Couple select kare, toh automatically persons 2 ho jayein ge
+      if (value === "Couple (Private Room)") {
+        setFormData((prev) => ({
+          ...prev,
+          roomType: value,
+          persons: prev.persons < 2 ? 2 : prev.persons,
+        }));
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          roomType: value,
+        }));
+      }
+    } else if (name === "persons") {
+      const val = parseInt(value, 10) || 1;
+      if (formData.roomType === "Couple (Private Room)" && val < 2) {
+        return; 
+      }
+      setFormData((prev) => ({ ...prev, [name]: val }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleBookingSubmit = (e) => {
     e.preventDefault();
 
-    const whatsappNumber = "923099956484"; // Target Number
+    const whatsappNumber = "+923028908761"; // Target Number
 
     const message = `👋 *NEW TOUR BOOKING INQUIRY*%0A%0A` +
       `📍 *Tour:* ${encodeURIComponent(formData.destination || tour.title)}%0A` +
@@ -83,7 +105,7 @@ function TourDetailPage() {
       `📅 *Travel Date:* ${encodeURIComponent(formData.travelDate)}%0A` +
       `👥 *Persons:* ${encodeURIComponent(formData.persons)} Person(s)%0A` +
       `🛌 *Stay Type:* ${encodeURIComponent(formData.roomType)}%0A` +
-      `💵 *Total Price:* PKR ${totalPrice.toLocaleString()} (Approx)%0A%0A` +
+      `💵 *Total Price:* PKR ${totalPrice.toLocaleString()}%0A%0A` +
       `Please confirm availability!`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
@@ -210,6 +232,26 @@ function TourDetailPage() {
               </ul>
             </div>
           </section>
+
+          {/* 📄 PDF Brochure View Section (Moved to Bottom & Download removed) */}
+          {tour.pdfUrl && (
+            <section className="detail-section pdf-download-box" style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", border: "1px dashed #00c853", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginTop: "20px" }}>
+              <div>
+                <h3 style={{ margin: "0 0 5px 0", color: "#051a17" }}>📄 Complete Tour Itinerary</h3>
+                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>View the detailed day-by-day plan and package brochure in PDF format.</p>
+              </div>
+              <a 
+                href={tour.pdfUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-download-pdf"
+                style={{ background: "#00c853", color: "#fff", padding: "10px 20px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block" }}
+              >
+                View PDF 👁️
+              </a>
+            </section>
+          )}
+
         </div>
 
         {/* Sidebar Booking Form */}
@@ -285,21 +327,23 @@ function TourDetailPage() {
                   <input 
                     type="number" 
                     name="persons"
-                    min="1"
+                    min={formData.roomType === "Couple (Private Room)" ? "2" : "1"}
                     max="50"
                     value={formData.persons}
                     onChange={handleChange}
                     required 
                   />
+                  {formData.roomType === "Couple (Private Room)" && (
+                    <small style={{ color: "#e6c182", fontSize: "11px", marginTop: "4px", display: "block" }}>
+                      *Couple package requires minimum 2 persons.
+                    </small>
+                  )}
                 </div>
 
                 {/* Calculated Total Price Box */}
                 <div className="calculated-price-box">
                   <span>Total Calculated Price:</span>
                   <h4>PKR {totalPrice.toLocaleString()}</h4>
-                  {formData.roomType === "Couple (Private Room)" && (
-                    <small>*Includes private couple room surcharge</small>
-                  )}
                 </div>
 
                 <button type="submit" className="btn-book">
