@@ -11,7 +11,7 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.8,
     reviewsCount: 34,
-    heroImage: "https://loremflickr.com/1200/600/naran,valley,river",
+    heroImage: "https://loremflickr.com/1200/600/naran",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdf/naran-valley-itinerary.pdf",
@@ -61,7 +61,7 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.9,
     reviewsCount: 29,
-    heroImage: "https://loremflickr.com/1200/600/swat,valley,river",
+    heroImage: "https://loremflickr.com/1200/600/swat",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/swat-kalam-itinerary.pdf",
@@ -101,7 +101,7 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.9,
     reviewsCount: 51,
-    heroImage: "https://loremflickr.com/1200/600/kashmir,valley,mountains",
+    heroImage: "https://loremflickr.com/1200/600/kashmir",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/neelum-valley-itinerary.pdf",
@@ -141,7 +141,7 @@ export const toursData = [
     price: "PKR 25,000",
     rating: 4.7,
     reviewsCount: 22,
-    heroImage: "https://loremflickr.com/1200/600/forest,waterfall,green",
+    heroImage: "https://loremflickr.com/1200/600/forest",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/kumrat-valley-itinerary.pdf",
@@ -181,7 +181,7 @@ export const toursData = [
     price: "PKR 29,000",
     rating: 5.0,
     reviewsCount: 68,
-    heroImage: "https://loremflickr.com/1200/600/autumn,valley,river,mountains",
+    heroImage: "https://loremflickr.com/1200/600/autumn",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/hunza-khunjerab-itinerary.pdf",
@@ -217,7 +217,7 @@ export const toursData = [
     price: "PKR 29,000",
     rating: 4.9,
     reviewsCount: 45,
-    heroImage: "https://loremflickr.com/1200/600/cabin,snowmountain,meadow",
+    heroImage: "https://loremflickr.com/1200/600/cabin",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/fairy-meadows-itinerary.pdf",
@@ -253,7 +253,7 @@ export const toursData = [
     rating: 5.0,
     reviewsCount: 38,
     heroImage:
-      "https://loremflickr.com/1200/600/skardu,valley,desert,mountains",
+      "https://loremflickr.com/1200/600/skardu",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/skardu-expedition-itinerary.pdf",
@@ -289,7 +289,7 @@ export const toursData = [
     price: "PKR 44,000",
     rating: 5.0,
     reviewsCount: 74,
-    heroImage: "https://loremflickr.com/1200/600/hunza,skardu,greenvalley,lake",
+    heroImage: "https://loremflickr.com/1200/600/hunza",
 
     // 📄 NEW: PDF / Brochure Link Field
     pdfUrl: "/pdfs/grand-hunza-skardu-itinerary.pdf",

@@ -80,14 +80,14 @@ function CustomizeTour() {
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>
-                <a
+                {/* <a
                   href={`https://wa.me/923028908761?text=${encodeURIComponent(item.whatsappText)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-book-now"
                 >
                   Book Now on WhatsApp ↗
-                </a>
+                </a> */}
               </div>
             </div>
           ))}

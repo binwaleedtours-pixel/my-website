@@ -62,9 +62,11 @@ function TourDetailPage() {
     return parseInt(num, 10) || 0;
   };
 
-  // FIXED PRICE CALCULATION LOGIC (Surcharge removed, direct multiplication):
+  // PRICE CALCULATION WITH COUPLE SURCHARGE (PKR 5,000 extra for couple room)
   const unitPrice = getNumericPrice(tour.price);
-  const totalPrice = unitPrice * Number(formData.persons);
+  const basePrice = unitPrice * Number(formData.persons);
+  const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? 5000 : 0;
+  const totalPrice = basePrice + coupleSurcharge;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -233,7 +235,7 @@ function TourDetailPage() {
             </div>
           </section>
 
-          {/* 📄 PDF Brochure View Section (Moved to Bottom & Download removed) */}
+          {/* 📄 PDF Brochure View Section */}
           {tour.pdfUrl && (
             <section className="detail-section pdf-download-box" style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", border: "1px dashed #00c853", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginTop: "20px" }}>
               <div>
@@ -340,10 +342,15 @@ function TourDetailPage() {
                   )}
                 </div>
 
-                {/* Calculated Total Price Box */}
+                {/* Calculated Total Price Box with Couple Note */}
                 <div className="calculated-price-box">
                   <span>Total Calculated Price:</span>
                   <h4>PKR {totalPrice.toLocaleString()}</h4>
+                  {formData.roomType === "Couple (Private Room)" && (
+                    <small style={{ color: "#00c853", fontSize: "11.5px", fontWeight: "600", display: "block", marginTop: "4px" }}>
+                      ✨ Includes Couple Private Room 
+                    </small>
+                  )}
                 </div>
 
                 <button type="submit" className="btn-book">

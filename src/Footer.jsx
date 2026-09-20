@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
+import logo from "./assets/BinWaleedWhite.png";
 
 function Footer() {
   const whatsappNumber = "+923028908761";
@@ -12,9 +13,10 @@ function Footer() {
         {/* Brand Info */}
         <div>
           <div className="footer-brand">
-            <div className="footer-logo">⛰️</div>
+            <div className="footer-logo">
+              <img src={logo} alt="Bin Waleed Tours" />
+            </div>
             <div>
-              <h3>Bin Waleed Tours</h3>
             </div>
           </div>
           <p className="footer-desc">
@@ -39,8 +41,7 @@ function Footer() {
           <h5>Support</h5>
           <ul className="footer-links">
             <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/privacypolicy">Privacy Policy</Link></li>    
-
+            <li><Link to="/privacypolicy">Privacy Policy</Link></li>
             <li><Link to="/termandconditions">Terms and Conditions</Link></li>
           </ul>
         </div>
@@ -51,7 +52,7 @@ function Footer() {
           <div className="contact-item">
             <span className="ic">📍</span>
             <span>
-         26 F/F, Quaid Commercial, Near Eiffel Tower, Bahria Town Lahore
+              26 F/F, Quaid Commercial, Near Eiffel Tower, Bahria Town Lahore
             </span>
           </div>
           <div className="contact-item">
@@ -103,7 +104,6 @@ function Footer() {
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.33 22a6.33 6.33 0 0 0 6.33-6.32V9.05a8.16 8.16 0 0 0 4.93 1.64V7.25a4.85 4.85 0 0 1-1-.56z" />
             </svg>
           </a>
-        
         </div>
       </div>
 
