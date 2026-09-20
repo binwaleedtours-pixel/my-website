@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { toursData } from "./data/toursData"; // Path check karein
+import { toursData } from "./data/toursData"; 
 import "./TourDetailPage.css";
+
+// Yahan apni Banner.png file ko import karein (path apne folder structure ke mutabiq check kar lein)
+import bannerImg from "./assets/Banner.png";
 
 function TourDetailPage() {
   const { slug } = useParams();
@@ -118,11 +121,11 @@ function TourDetailPage() {
 
   return (
     <div className="tour-detail-page">
-      {/* Tour Banner with High Visibility Typography */}
+    {/* Tour Banner with High Visibility Typography */}
       <div
         className="tour-banner"
         style={{
-          backgroundImage: `linear-gradient(rgba(5, 26, 23, 0.75), rgba(5, 26, 23, 0.85)), url(${tour.heroImage || tour.image})`,
+          backgroundImage: `linear-gradient(rgba(5, 26, 23, 0.75), rgba(5, 26, 23, 0.85)), url(${bannerImg})`,
         }}
       >
         <div className="container banner-inner">

@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./AboutPage.css";
 import Gallery from "./Gallery";
-
+import founderImg from "./assets/founder.png";
+  import ceoImg from "./assets/ceo.png";
 function AboutPage() {
   return (
     <div className="about-page">
@@ -85,7 +86,7 @@ function AboutPage() {
           <div className="leader-card">
             <div className="leader-img-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                src={founderImg}
                 alt="Waleed Chaudhry - Founder & Director"
                 className="leader-img"
               />
@@ -108,7 +109,7 @@ function AboutPage() {
           <div className="leader-card reverse">
             <div className="leader-img-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                src={ceoImg}
                 alt="Shakaib Ali - CEO"
                 className="leader-img"
               />

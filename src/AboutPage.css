@@ -10,7 +10,7 @@
   position: relative;
   width: 100%;
   height: 320px;
-  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80")
+  background: url("./assets/Banner.png")
     no-repeat center center/cover;
   display: flex;
   align-items: center;
