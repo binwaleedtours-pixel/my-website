@@ -5,7 +5,7 @@ header.header {
   left: 0;
   width: 100%;
   z-index: 9999;
-  background: #faf9f7;
+  background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -13,17 +13,27 @@ header.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 32px;
+  padding: 12px 32px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 10001; /* Keeps Logo and Hamburger above Drawer overlay */
 }
 
+/* Header Logo Container & Image Fix */
+.logo-container,
+.nav-wrap > a:first-child {
+  display: flex;
+  align-items: center;
+  height: 45px; /* Header ke andar logo area ki fix height */
+}
+
 .logo-img {
-  height: 48px;
+  height: 100px;
+  max-height: 100px; /* Logo ko blur ya stretch hone se bachata hai */
   width: auto;
   object-fit: contain;
+  display: block;
 }
 
 /* Desktop Navigation */

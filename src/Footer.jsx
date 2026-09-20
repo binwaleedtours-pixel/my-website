@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import logo from "./assets/BinWaleedWhite.png";
+import logo from "./assets/BinWaleedToursLogo.png";
 
 function Footer() {
   const whatsappNumber = "+923028908761";
@@ -13,16 +13,11 @@ function Footer() {
         {/* Brand Info */}
         <div>
           <div className="footer-brand">
-            <div className="footer-logo">
-              <img src={logo} alt="Bin Waleed Tours" />
-            </div>
+             <img src={logo} alt="Bin Waleed Tours" />
             <div>
             </div>
           </div>
-          <p className="footer-desc">
-            Your premier partner for alpine expeditions and luxury tours across
-            the majestic landscapes of Pakistan.
-          </p>
+        
         </div>
 
         {/* Company Navigation Links */}

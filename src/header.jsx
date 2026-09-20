@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import logo from "./assets/BinWaleedTours.png";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ function Header() {
       <div className="nav-wrap">
         {/* Logo */}
         <Link to="/" className="logo" onClick={closeMenu}>
-          <img src="/logo.jpg" alt="Company Logo" className="logo-img" />
+          <img src={logo} alt="Company Logo" className="logo-img" />
         </Link>
 
         {/* Desktop Links */}
