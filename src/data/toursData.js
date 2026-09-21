@@ -1,9 +1,19 @@
 // File Path: src/data/toursData.js
 
+// Local Tour Images Import
+import naranImg from "../tourImg/Naran.jpeg";
+import swatImg from "../tourImg/Swat.jpeg";
+import kashmirImg from "../tourImg/Kashmir.jpeg";
+import kumratImg from "../tourImg/Kumrat.jpeg";
+import hunzaImg from "../tourImg/Hunza.jpeg";
+import fairyMeadowsImg from "../tourImg/FairyMeadows.jpeg";
+import skarduImg from "../tourImg/Skardu.jpeg";
+import hunzaSkarduImg from "../tourImg/HunzaSkardu.jpeg";
+
 export const toursData = [
   {
     id: 1,
-    slug: "naran-valley", // <- Yeh slug aur Expeditions.jsx ka slug exact SAME hone chahiye
+    slug: "naran-valley",
     title: "Naran & Saif-ul-Malook Tour",
     location: "Kaghan Valley, KPK",
     duration: "3 Days / 2 Nights",
@@ -11,10 +21,10 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.8,
     reviewsCount: 34,
-    heroImage: "https://loremflickr.com/1200/600/naran",
+    heroImage: naranImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdf/naran-valley-itinerary.pdf",
+    // 📄 FIXED: Path corrected to /pdfs/ matching folder structure
+    pdfUrl: "/pdfs/3DaysNaranBabusarTop.pdf",
 
     overview:
       "Explore the scenic beauty of Naran Valley and Kaghan Valley, the legendary Saif-ul-Malook lake, Babusar Top, Gittidas Meadows, and Lulusar Lake.",
@@ -61,10 +71,9 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.9,
     reviewsCount: 29,
-    heroImage: "https://loremflickr.com/1200/600/swat",
+    heroImage: swatImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/swat-kalam-itinerary.pdf",
+    pdfUrl: "/pdfs/3DaysSwatKalamMalamjabba.pdf",
 
     overview:
       "Discover Switzerland of the East with lush green valleys, Swat, Kalam, Malam Jabba and Mahodand Lake.",
@@ -101,10 +110,9 @@ export const toursData = [
     price: "PKR 18,500",
     rating: 4.9,
     reviewsCount: 51,
-    heroImage: "https://loremflickr.com/1200/600/kashmir",
+    heroImage: kashmirImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/neelum-valley-itinerary.pdf",
+    pdfUrl: "/pdfs/3DaysKashmir&Arankel.pdf",
 
     overview:
       "Journey into the heaven on earth featuring Dhani Waterfall, Keran, Sharda, LOC view point and Arang Kel.",
@@ -141,10 +149,9 @@ export const toursData = [
     price: "PKR 25,000",
     rating: 4.7,
     reviewsCount: 22,
-    heroImage: "https://loremflickr.com/1200/600/forest",
+    heroImage: kumratImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/kumrat-valley-itinerary.pdf",
+    pdfUrl: "/pdfs/4DaysKumratJhazbanda.pdf",
 
     overview:
       "Trek into untouched alpine wilderness, Katora Lake and dense pine forests.",
@@ -181,10 +188,9 @@ export const toursData = [
     price: "PKR 29,000",
     rating: 5.0,
     reviewsCount: 68,
-    heroImage: "https://loremflickr.com/1200/600/autumn",
+    heroImage: hunzaImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/hunza-khunjerab-itinerary.pdf",
+    pdfUrl: "/pdfs/5DaysHunza&ChinaBoarder.pdf",
 
     overview:
       "Experience Karakoram Highway, historic forts, Attabad Lake, and Khunjerab Pass.",
@@ -217,10 +223,9 @@ export const toursData = [
     price: "PKR 29,000",
     rating: 4.9,
     reviewsCount: 45,
-    heroImage: "https://loremflickr.com/1200/600/cabin",
+    heroImage: fairyMeadowsImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/fairy-meadows-itinerary.pdf",
+    pdfUrl: "/pdfs/5Days-FairyMeadows,Naran&NangaParbat.pdf",
 
     overview: "Stand face to face with Nanga Parbat from wooden cabins.",
     highlights: ["Raikot Jeep Safari", "Fairy Meadows Hike"],
@@ -252,10 +257,10 @@ export const toursData = [
     price: "PKR 36,000",
     rating: 5.0,
     reviewsCount: 38,
-    heroImage:
-      "https://loremflickr.com/1200/600/skardu",
+    heroImage: skarduImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
+    // Note: Ensure you have 'skardu-expedition-itinerary.pdf' inside public/pdfs folder,
+    // or update this filename to match what is physically in your public/pdfs folder.
     pdfUrl: "/pdfs/skardu-expedition-itinerary.pdf",
 
     overview:
@@ -289,10 +294,9 @@ export const toursData = [
     price: "PKR 44,000",
     rating: 5.0,
     reviewsCount: 74,
-    heroImage: "https://loremflickr.com/1200/600/hunza",
+    heroImage: hunzaSkarduImg,
 
-    // 📄 NEW: PDF / Brochure Link Field
-    pdfUrl: "/pdfs/grand-hunza-skardu-itinerary.pdf",
+    pdfUrl: "/pdfs/8DaysHunza&SkarduValley.pdf",
 
     overview:
       "Discover Shangrila Lake, Shigar Fort, Upper Kachura Lake, Cold Desert, Sheosar Lake, Sadpara Lake, Passu Cones, Hussani Bridge, Deosai Plains, RakaPoshi and Khunjerab Pass.",
@@ -307,7 +311,7 @@ export const toursData = [
       services: {
         accommodation: "According To Your Package",
         food: "03 Breakfasts & 02 Dinners",
-        transportation: "Travel In_A GRAND CABIN or Latest Model COASTER",
+        transportation: "Travel In A GRAND CABIN or Latest Model COASTER",
       },
       importantNotes: [
         "Only Blood Relations And Married Couples Are Allowed To Share a Room.",

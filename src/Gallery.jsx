@@ -3,15 +3,25 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Gallery.css";
 
+// All images imported from src/assets/gallerySection/
+import img1 from "./gallerySection/IMG_0644.jpg";
+import img2 from "./gallerySection/IMG_2795.jpg";
+import img3 from "./gallerySection/IMG_2871.jpg";
+import img4 from "./gallerySection/IMG_2926.jpg";
+import img5 from "./gallerySection/IMG_4409.jpg";
+import img6 from "./gallerySection/IMG_4440.jpg";
+import img7 from "./gallerySection/IMG_4497.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const images = [
-  { id: 1, url: "https://loremflickr.com/600/400/mountains,lake", alt: "Attabad Lake" },
-  { id: 2, url: "https://loremflickr.com/600/400/pakistan,valley", alt: "Hunza Valley" },
-  { id: 3, url: "https://loremflickr.com/600/400/snow,mountains", alt: "Nanga Parbat" },
-  { id: 4, url: "https://loremflickr.com/600/400/river,forest", alt: "Neelum Valley" },
-  { id: 5, url: "https://loremflickr.com/600/400/desert,mountains", alt: "Katpana Desert" },
-  { id: 6, url: "https://loremflickr.com/600/400/meadow,green", alt: "Deosai Plains" },
+  { id: 1, url: img1 },
+  { id: 2, url: img2  },
+  { id: 3, url: img3 },
+  { id: 4, url: img4},
+  { id: 5, url: img5  },
+  { id: 6, url: img6 },
+  { id: 7, url: img7 },
 ];
 
 function Gallery() {
@@ -36,7 +46,6 @@ function Gallery() {
           scrub: 1,
           pin: true,
           start: "top 10%",
-          // Scroll length factor (1.5 - 2.0 ideal for smooth ending)
           end: () => `+=${getScrollAmount() * 1.5}`,
           invalidateOnRefresh: true,
           anticipatePin: 1,
@@ -44,11 +53,9 @@ function Gallery() {
       });
     }, sectionRef);
 
-    // Images load hone ke baad ScrollTrigger refresh force karein
     const handleLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", handleLoad);
     
-    // Safety delay refresh for React dynamic mounting
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 500);

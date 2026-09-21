@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toursData } from "./data/toursData"; 
 import "./TourDetailPage.css";
 
-// Yahan apni Banner.png file ko import karein (path apne folder structure ke mutabiq check kar lein)
+// Yahan apni Banner.png file ko import karein
 import bannerImg from "./assets/Banner.png";
 
 function TourDetailPage() {
@@ -20,29 +20,13 @@ function TourDetailPage() {
     travelDate: "",
     destination: tour?.title || "",
     persons: 1,
-    roomType: "Single / Group Sharing", // Default choice
+    roomType: "Single / Group Sharing",
   });
 
   const [bookingStatus, setBookingStatus] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
 
-  // Fallback Carousel Images
-  const galleryImages = tour?.gallery || [
-    tour?.heroImage || tour?.image,
-    tour?.image || tour?.heroImage,
-    "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1627894010302-3932e652d874?q=80&w=1000&auto=format&fit=crop",
-  ].filter(Boolean);
-
-  // Auto-Play Carousel Logic
-  useEffect(() => {
-    if (!galleryImages || galleryImages.length <= 1) return;
-    const interval = setInterval(() => {
-      setActiveSlide((prevIndex) => (prevIndex + 1) % galleryImages.length);
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, [galleryImages]);
+  // Single Main Image for Tour Card
+  const mainTourImage = tour?.heroImage || tour?.image || "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1000&auto=format&fit=crop";
 
   if (!tour) {
     return (
@@ -57,7 +41,6 @@ function TourDetailPage() {
     );
   }
 
-  // Helper to extract numeric price from string e.g. "PKR 18,500" -> 18500
   const getNumericPrice = (priceStr) => {
     if (!priceStr) return 0;
     if (typeof priceStr === "number") return priceStr;
@@ -65,7 +48,6 @@ function TourDetailPage() {
     return parseInt(num, 10) || 0;
   };
 
-  // PRICE CALCULATION WITH COUPLE SURCHARGE (PKR 5,000 extra for couple room)
   const unitPrice = getNumericPrice(tour.price);
   const basePrice = unitPrice * Number(formData.persons);
   const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? 5000 : 0;
@@ -75,7 +57,6 @@ function TourDetailPage() {
     const { name, value } = e.target;
 
     if (name === "roomType") {
-      // Agar user Couple select kare, toh automatically persons 2 ho jayein ge
       if (value === "Couple (Private Room)") {
         setFormData((prev) => ({
           ...prev,
@@ -101,8 +82,7 @@ function TourDetailPage() {
 
   const handleBookingSubmit = (e) => {
     e.preventDefault();
-
-    const whatsappNumber = "+923028908761"; // Target Number
+    const whatsappNumber = "+923028908761"; 
 
     const message = `👋 *NEW TOUR BOOKING INQUIRY*%0A%0A` +
       `📍 *Tour:* ${encodeURIComponent(formData.destination || tour.title)}%0A` +
@@ -114,14 +94,13 @@ function TourDetailPage() {
       `Please confirm availability!`;
 
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-
     setBookingStatus(true);
     window.open(whatsappUrl, "_blank");
   };
 
   return (
     <div className="tour-detail-page">
-    {/* Tour Banner with High Visibility Typography */}
+      {/* Tour Banner */}
       <div
         className="tour-banner"
         style={{
@@ -143,30 +122,12 @@ function TourDetailPage() {
       <div className="container tour-content-grid">
         <div className="tour-main-details">
           
-          {/* Auto-Playing Image Carousel Section */}
-          <section className="carousel-section">
-            <div className="auto-carousel">
-              {galleryImages.map((imgUrl, idx) => (
-                <div
-                  key={idx}
-                  className={`carousel-slide ${idx === activeSlide ? "active" : ""}`}
-                  style={{ backgroundImage: `url(${imgUrl})` }}
-                />
-              ))}
-              {/* Carousel Indicators */}
-              <div className="carousel-dots">
-                {galleryImages.map((_, idx) => (
-                  <span
-                    key={idx}
-                    className={`dot ${idx === activeSlide ? "active" : ""}`}
-                    onClick={() => setActiveSlide(idx)}
-                  />
-                ))}
-              </div>
+          <section className="tour-image-card-section">
+            <div className="tour-single-image-wrapper">
+              <img src={mainTourImage} alt={tour.title} className="tour-featured-image" />
             </div>
           </section>
 
-          {/* Overview Section */}
           <section className="detail-section">
             <h2>Overview</h2>
             <p>{tour.overview}</p>
@@ -183,11 +144,9 @@ function TourDetailPage() {
             </section>
           )}
 
-          {/* About This Tour: Departures & Services Section */}
           {tour.tourDetails && (
             <section className="detail-section">
               <h2>About This Tour</h2>
-              
               <div className="tour-info-block">
                 <h3>🚀 Departure Cities</h3>
                 <div className="badge-grid">
@@ -238,22 +197,32 @@ function TourDetailPage() {
             </div>
           </section>
 
-          {/* 📄 PDF Brochure View Section */}
+          {/* 📄 PDF Brochure Normal Open / Download Section */}
           {tour.pdfUrl && (
             <section className="detail-section pdf-download-box" style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", border: "1px dashed #00c853", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginTop: "20px" }}>
               <div>
                 <h3 style={{ margin: "0 0 5px 0", color: "#051a17" }}>📄 Complete Tour Itinerary</h3>
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>View the detailed day-by-day plan and package brochure in PDF format.</p>
+                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>View or download the detailed day-by-day plan brochure.</p>
               </div>
-              <a 
-                href={tour.pdfUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn-download-pdf"
-                style={{ background: "#00c853", color: "#fff", padding: "10px 20px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block" }}
-              >
-                View PDF 👁️
-              </a>
+              <div style={{ display: "flex", gap: "10px" }}>
+                <a 
+                  href={tour.pdfUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-download-pdf"
+                  style={{ background: "#051a17", color: "#fff", padding: "10px 16px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block", fontSize: "14px" }}
+                >
+                  Open PDF 👁️
+                </a>
+                <a 
+                  href={tour.pdfUrl} 
+                  download
+                  className="btn-download-pdf"
+                  style={{ background: "#00c853", color: "#fff", padding: "10px 16px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block", fontSize: "14px" }}
+                >
+                  Download 📥
+                </a>
+              </div>
             </section>
           )}
 
@@ -271,10 +240,7 @@ function TourDetailPage() {
               <div className="booking-success">
                 🎉 <h4>Opening WhatsApp...</h4>
                 <p>Aap ki booking inquiry redirect kar di gayi hai.</p>
-                <button 
-                  onClick={() => setBookingStatus(false)} 
-                  className="btn-book-again"
-                >
+                <button onClick={() => setBookingStatus(false)} className="btn-book-again">
                   Book Another Inquiry
                 </button>
               </div>
@@ -282,46 +248,22 @@ function TourDetailPage() {
               <form onSubmit={handleBookingSubmit} className="booking-form">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input 
-                    type="text" 
-                    name="name"
-                    placeholder="Your Name" 
-                    value={formData.name}
-                    onChange={handleChange}
-                    required 
-                  />
+                  <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">
                   <label>Travel Date</label>
-                  <input 
-                    type="date" 
-                    name="travelDate"
-                    value={formData.travelDate}
-                    onChange={handleChange}
-                    required 
-                  />
+                  <input type="date" name="travelDate" value={formData.travelDate} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">
                   <label>Destination</label>
-                  <input 
-                    type="text" 
-                    name="destination"
-                    value={formData.destination || tour.title}
-                    onChange={handleChange}
-                    required 
-                  />
+                  <input type="text" name="destination" value={formData.destination || tour.title} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">
                   <label>Booking / Room Type</label>
-                  <select 
-                    name="roomType"
-                    value={formData.roomType}
-                    onChange={handleChange}
-                    required
-                  >
+                  <select name="roomType" value={formData.roomType} onChange={handleChange} required>
                     <option value="Single / Group Sharing">Single / Group Sharing</option>
                     <option value="Couple (Private Room)">Couple (Private Room)</option>
                   </select>
@@ -329,15 +271,7 @@ function TourDetailPage() {
 
                 <div className="form-group">
                   <label>Number of Persons</label>
-                  <input 
-                    type="number" 
-                    name="persons"
-                    min={formData.roomType === "Couple (Private Room)" ? "2" : "1"}
-                    max="50"
-                    value={formData.persons}
-                    onChange={handleChange}
-                    required 
-                  />
+                  <input type="number" name="persons" min={formData.roomType === "Couple (Private Room)" ? "2" : "1"} max="50" value={formData.persons} onChange={handleChange} required />
                   {formData.roomType === "Couple (Private Room)" && (
                     <small style={{ color: "#e6c182", fontSize: "11px", marginTop: "4px", display: "block" }}>
                       *Couple package requires minimum 2 persons.
@@ -345,7 +279,6 @@ function TourDetailPage() {
                   )}
                 </div>
 
-                {/* Calculated Total Price Box with Couple Note */}
                 <div className="calculated-price-box">
                   <span>Total Calculated Price:</span>
                   <h4>PKR {totalPrice.toLocaleString()}</h4>
@@ -356,9 +289,7 @@ function TourDetailPage() {
                   )}
                 </div>
 
-                <button type="submit" className="btn-book">
-                  Book via WhatsApp 💬
-                </button>
+                <button type="submit" className="btn-book">Book via WhatsApp 💬</button>
               </form>
             )}
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./AboutSection.css";
-
+import aboutImage from "./assets/aboutimg.jpg";
 function AboutSection() {
   return (
     <section className="about-section" id="about">
@@ -65,7 +65,7 @@ Whether you're travelling with family, friends, or looking for your next adventu
               className="about-img"
               style={{
                 backgroundImage:
-                  'url("https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=1200&q=80")',
+                  `url(${aboutImage})`,
               }}
             >
               <div className="img-overlay"></div>

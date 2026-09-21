@@ -2,12 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Expeditions.css";
 
+// Assets folder se images proper import karein
+import naranImg from "./tourImg/Naran.jpeg";
+import swatImg from "./tourImg/Swat.jpeg";
+import kashmirImg from "./tourImg/Kashmir.jpeg";
+import kumratImg from "./tourImg/Kumrat.jpeg";
+import hunzaImg from "./tourImg/Hunza.jpeg";
+import fairyMeadowsImg from "./tourImg/FairyMeadows.jpeg";
+import skarduImg from "./tourImg/Skardu.jpeg";
+import hunzaSkarduImg from "./tourImg/HunzaSkardu.jpeg";
+
 const expeditionsData = [
   {
     id: 1,
     slug: "naran-valley",
     title: "Naran Valley",
-    image: "https://loremflickr.com/500/350/naran,valley,river",
+    image: naranImg,
     badge: "3 Days",
     departure: "Departures: Mon & Thu Night",
     price: "PKR 18,500",
@@ -18,7 +28,7 @@ const expeditionsData = [
     id: 2,
     slug: "swat-valley",
     title: "Swat Valley",
-    image: "https://loremflickr.com/500/350/swat,valley,river",
+    image: swatImg,
     badge: "3 Days",
     departure: "Departures: Mon & Thu Night",
     price: "PKR 18,500",
@@ -29,7 +39,7 @@ const expeditionsData = [
     id: 3,
     slug: "kashmir",
     title: "Kashmir",
-    image: "https://loremflickr.com/500/350/kashmir,valley,mountains",
+    image: kashmirImg,
     badge: "3 Days",
     departure: "Departures: Mon & Thu Night",
     price: "PKR 18,500",
@@ -40,7 +50,7 @@ const expeditionsData = [
     id: 4,
     slug: "kumrat-jhazbanda",
     title: "Kumrat & Jhazbanda",
-    image: "https://loremflickr.com/500/350/forest,waterfall,green",
+    image: kumratImg,
     badge: "4 Days",
     departure: "Departures: Wed Night",
     price: "PKR 25,000",
@@ -51,7 +61,7 @@ const expeditionsData = [
     id: 5,
     slug: "hunza-khunjrab-pass",
     title: "Hunza & Khunjrab Pass",
-    image: "https://loremflickr.com/500/350/autumn,valley,river,mountains",
+    image: hunzaImg,
     badge: "5 Days",
     departure: "Departures: Tue & Fri Night",
     price: "PKR 29,000",
@@ -62,7 +72,7 @@ const expeditionsData = [
     id: 6,
     slug: "fairy-meadows",
     title: "Fairy Meadows",
-    image: "https://loremflickr.com/500/350/cabin,snowmountain,meadow",
+    image: fairyMeadowsImg,
     badge: "5 Days",
     departure: "Departures: Tue & Fri Night",
     price: "PKR 29,000",
@@ -73,7 +83,7 @@ const expeditionsData = [
     id: 7,
     slug: "skardu-valley",
     title: "Skardu Valley",
-    image: "https://loremflickr.com/500/350/skardu,valley,desert,mountains",
+    image: skarduImg,
     badge: "6 Days",
     departure: "Departures: Thu Night",
     price: "PKR 36,000",
@@ -84,12 +94,12 @@ const expeditionsData = [
     id: 8,
     slug: "hunza-skardu",
     title: "Hunza & Skardu",
-    image: "https://loremflickr.com/500/350/hunza,skardu,greenvalley,lake",
+    image: hunzaSkarduImg,
     badge: "8 Days",
     departure: "Departures: Fri Night",
-    price: "PKR 45,000",
-    solo: "45,000",
-    couple: "95,000",
+    price: "PKR 44,000",
+    solo: "44,000",
+    couple: "97,000",
   },
 ];
 
@@ -144,8 +154,6 @@ function Expeditions() {
           </div>
         ))}
       </div>
-
-    
     </section>
   );
 }

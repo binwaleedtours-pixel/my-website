@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./Hero.css";
-
+import banner1 from "./assets/IMG_1276.jpg";
+import banner2 from "./assets/IMG_1162.jpg";
+import banner3 from "./assets/IMG_1420.jpg";
 const slidesData = [
   {
     id: 1,
@@ -9,7 +11,7 @@ const slidesData = [
     description:
       "Embark on unforgettable journeys through Pakistan's most serene valleys, Lakes and rugged peaks.",
     bgImage:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+      banner1,
   },
   {
     id: 2,
@@ -17,7 +19,7 @@ const slidesData = [
     description:
       "Travel through majestic mountains, scenic valleys, and hidden gems while creating memories with a family environment  that last a lifetime.",
     bgImage:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80",
+      banner2,
   },
   {
     id: 3,
@@ -25,7 +27,7 @@ const slidesData = [
     description:
       "Discover breathtaking destinations, unforgettable adventures, and thoughtfully planned journeys with a registered tourism company.",
     bgImage:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80",
+      banner3,
   },
 ];
 
