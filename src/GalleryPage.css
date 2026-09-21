@@ -197,29 +197,42 @@
 }
 
 @media (max-width: 768px) {
+  /* Prevent horizontal overflow on entire gallery page */
+  .gallery-page {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .top-page-banner {
     height: 200px;
   }
+  
   .page-title {
     font-size: 36px;
   }
-
-  /* Magazine Grid ko 2 Columns mein convert karne ke liye */
+  
+  /* Perfectly fitted 2 Columns without overflow */
   .magazine-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 12px !important;
+    gap: 10px !important;
+    padding: 0 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
   }
 
   .gallery-card {
-    height: 210px !important; /* Mobile par card height thodi compact kar di hai taaki 2 columns mein balance lage */
+    height: 190px !important;
+    width: 100% !important;
   }
 
   .card-info {
-    padding: 14px !important;
+    padding: 12px !important;
   }
 
   .card-info h3 {
-    font-size: 16px !important;
+    font-size: 15px !important;
   }
 }
