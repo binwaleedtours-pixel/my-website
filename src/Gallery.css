@@ -2,6 +2,8 @@
 .gallery-outer-wrapper {
   width: 100%;
   position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* Base pinned section - Height fix for Mobile & Desktop */
@@ -14,7 +16,7 @@
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 60px 0; /* Fixed vh height ki jagah content padding */
+  padding: 60px 0;
 }
 
 /* Section Headings */
@@ -48,21 +50,22 @@
 .gallery-track {
   display: flex;
   gap: 24px;
-  padding: 10px 10vw; /* Padding normalize kar di hai */
+  padding: 10px 10vw;
   width: max-content;
   will-change: transform;
 }
 
 /* Desktop Cards */
 .gallery-card {
-  width: 320px; /* 380px se reduce kiya taaki space balanced lage */
-  height: 380px; /* 460px se reduce kiya */
+  width: 320px;
+  height: 380px;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   background-color: #f3f4f6;
+  box-sizing: border-box;
 }
 
 .gallery-card img {
@@ -103,14 +106,15 @@
   font-size: 16px;
 }
 
-/* ---------- Mobile Responsive Fix ---------- */
+/* ---------- Mobile Responsive Fix (Clean 2-Column Grid) ---------- */
 @media (max-width: 768px) {
   .gallery-pin-section {
-    padding: 35px 0; /* Mobile top & bottom extra space clear */
+    padding: 35px 12px !important;
   }
 
   .gallery-pin-section .section-headings {
     margin-bottom: 20px;
+    padding: 0 10px;
   }
 
   .gallery-pin-section .section-headings h2 {
@@ -121,22 +125,34 @@
     font-size: 13.5px;
   }
 
+  /* Mobile par track ko clean 2-column grid mein convert kiya hai taaki overflow na ho */
   .gallery-track {
-    gap: 16px;
-    padding: 5px 6vw;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 4px !important;
+    width: 100% !important;
+    transform: none !important;
+    box-sizing: border-box !important;
   }
 
   .gallery-card {
-    width: 240px;
-    height: 300px; /* Mobile height increase ki hai taaki ratio kharab na ho */
+    width: 100% !important;
+    height: 220px !important;
+    border-radius: 12px;
   }
 
   .gallery-overlay {
-    opacity: 1; /* Touch devices par title visible rahega */
+    opacity: 1 !important;
     background: linear-gradient(
       180deg,
       transparent 50%,
       rgba(0, 0, 0, 0.8) 100%
     );
+    padding: 12px;
+  }
+
+  .gallery-overlay span {
+    font-size: 13px;
   }
 }
