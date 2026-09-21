@@ -121,7 +121,7 @@ function Expeditions() {
             {/* Clickable Image -> Detail Page */}
             <Link to={`/tour/${exp.slug}`} className="exp-img-link">
               <div className="exp-img">
-                <img src={exp.image} alt={exp.title} />
+                <img src={exp.image} alt={exp.title} loading="lazy"/>
                 <span className="days-badge">{exp.badge}</span>
               </div>
             </Link>
