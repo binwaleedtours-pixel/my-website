@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-/* Base pinned section - Height fix for Mobile & Desktop */
+/* Base pinned section */
 .gallery-pin-section {
   position: relative;
   width: 100%;
@@ -45,6 +45,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 }
 
 .gallery-track {
@@ -106,15 +107,15 @@
   font-size: 16px;
 }
 
-/* ---------- Mobile Responsive Fix (Clean 2-Column Grid) ---------- */
+/* ---------- Mobile Responsive Fix (Proper 2-Column Grid) ---------- */
 @media (max-width: 768px) {
   .gallery-pin-section {
-    padding: 35px 12px !important;
+    padding: 35px 16px !important;
   }
 
   .gallery-pin-section .section-headings {
-    margin-bottom: 20px;
-    padding: 0 10px;
+    margin-bottom: 24px;
+    padding: 0;
   }
 
   .gallery-pin-section .section-headings h2 {
@@ -125,12 +126,17 @@
     font-size: 13.5px;
   }
 
-  /* Mobile par track ko clean 2-column grid mein convert kiya hai taaki overflow na ho */
+  .gallery-wrapper {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Track ko mobile par 100% proper grid bana diya hai */
   .gallery-track {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 4px !important;
+    gap: 14px !important;
+    padding: 0 !important;
     width: 100% !important;
     transform: none !important;
     box-sizing: border-box !important;
@@ -138,16 +144,17 @@
 
   .gallery-card {
     width: 100% !important;
-    height: 220px !important;
-    border-radius: 12px;
+    height: 210px !important;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   }
 
   .gallery-overlay {
     opacity: 1 !important;
     background: linear-gradient(
       180deg,
-      transparent 50%,
-      rgba(0, 0, 0, 0.8) 100%
+      transparent 45%,
+      rgba(0, 0, 0, 0.75) 100%
     );
     padding: 12px;
   }
