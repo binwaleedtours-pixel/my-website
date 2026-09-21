@@ -106,7 +106,6 @@ const expeditionsData = [
 function Expeditions() {
   return (
     <section className="expeditions" id="tours">
-      Section Heading
       <div className="section-headings">
         <h2>Featured Expeditions</h2>
         <p>
