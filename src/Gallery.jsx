@@ -79,16 +79,20 @@ function Gallery() {
         </div>
 
         <div className="gallery-wrapper">
-          <div className="gallery-track" ref={trackRef}>
-            {images.map((img) => (
-              <div key={img.id} className="gallery-card">
-                <img src={img.url} alt={img.alt} loading="eager" />
-                <div className="gallery-overlay">
-                  <span>{img.alt}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="gallery-track" ref={trackRef}>
+  {images.map((img, index) => (
+    <div key={img.id} className="gallery-card">
+      <img 
+        src={img.url} 
+        alt={img.alt || `Gallery image ${img.id}`} 
+        loading={index === 0 ? "eager" : "lazy"} 
+      />
+      <div className="gallery-overlay">
+        <span>{img.alt}</span>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
     </div>
