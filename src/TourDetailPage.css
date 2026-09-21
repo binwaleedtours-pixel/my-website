@@ -336,7 +336,7 @@
   /* Mobile Image Fix: Height auto kardi hai taaki image poori aur original shape mein dikhe */
   .tour-single-image-wrapper {
     height: auto !important;
-    max-height: 420px;
+    max-height: auto !important;
   }
   
   .tour-featured-image {
