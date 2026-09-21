@@ -332,8 +332,17 @@
   .grid-split {
     grid-template-columns: 1fr;
   }
+  
+  /* Mobile Image Fix: Height auto kardi hai taaki image poori aur original shape mein dikhe */
   .tour-single-image-wrapper {
-    height: 300px;
+    height: auto !important;
+    max-height: 420px;
+  }
+  
+  .tour-featured-image {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important; /* Image ka koi bhi hissa kate ga nahi */
   }
 }
 /* PDF Popup Modal CSS Styles */

@@ -9,8 +9,7 @@
   position: relative;
   width: 100%;
   height: 260px;
-  background: url("./assets/Banner.png")
-    no-repeat center center/cover;
+  background: url("./assets/Banner.png") no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,7 +203,23 @@
   .page-title {
     font-size: 36px;
   }
+
+  /* Magazine Grid ko 2 Columns mein convert karne ke liye */
   .magazine-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 12px !important;
+  }
+
+  .gallery-card {
+    height: 210px !important; /* Mobile par card height thodi compact kar di hai taaki 2 columns mein balance lage */
+  }
+
+  .card-info {
+    padding: 14px !important;
+  }
+
+  .card-info h3 {
+    font-size: 16px !important;
   }
 }
