@@ -17,7 +17,6 @@ function Footer() {
             <div>
             </div>
           </div>
-        
         </div>
 
         {/* Company Navigation Links */}
@@ -61,7 +60,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom Bar with Social Links instead of Globe */}
+      {/* Footer Bottom Bar with Social Links */}
       <div className="footer-bottom">
         <span>
           © 2026 Bin Waleed Tours. All rights reserved. Built for adventurers.
@@ -102,7 +101,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Floating WhatsApp Button */}
+      {/* Floating WhatsApp Button (Official Icon Updated) */}
       <a
         href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
         className="whatsapp-float"
@@ -111,11 +110,11 @@ function Footer() {
         aria-label="Chat on WhatsApp"
       >
         <svg
-          viewBox="0 0 32 32"
+          viewBox="0 0 24 24"
           className="whatsapp-icon"
           fill="currentColor"
         >
-          <path d="M16 2a13 13 0 0 0-11.2 19.6L3 29l7.7-1.7A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1.9.9-4-.3-.4A10.8 10.8 0 1 1 16 25.8zm5.9-8.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-.1 1.2c.2.2.4.2 1.6 1.4 1.5 1.3 2.8 1.8 3.2 2s.6.3.9-.1c.3-.4 1.2-1.4 1.5-1.9s.6-.4.9-.3c.3.1 2 .9 2.3 1.1s.6.3.7.5a2.6 2.6 0 0 1-.2 1.5z" />
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.42 1.33 4.88L2 22l5.33-1.42c1.41.77 3.02 1.2 4.71 1.2 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.83 14.19c-.24.67-1.4 1.28-1.93 1.36-.51.08-1.16.12-3.74-.92-3.15-1.28-5.23-4.49-5.39-4.71-.16-.22-1.27-1.69-1.27-3.23 0-1.54.81-2.28 1.1-2.59.29-.31.63-.39.84-.39.21 0 .42 0 .61.01.2 0 .47-.08.74.57.27.67.92 2.25 1 2.41.08.16.13.35.03.56-.1.21-.15.34-.31.52-.16.18-.34.4-.49.54-.16.16-.33.34-.14.66.19.32.84 1.39 1.8 2.25 1.24 1.1 2.28 1.44 2.6 1.6.32.16.51.14.7-.08.19-.22.82-.96 1.04-1.29.22-.33.44-.27.74-.16.3.11 1.9.9 2.23 1.06.33.16.55.24.63.37.08.13.08.75-.16 1.42z" />
         </svg>
       </a>
     </footer>
