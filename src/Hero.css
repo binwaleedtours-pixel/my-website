@@ -1,13 +1,8 @@
 /* ---------- Premium Hero Base Height Fix ---------- */
 .hero {
   position: relative !important;
-  /* Option A: Pure Viewport Height (Screen ke mutabiq 100% height) */
   min-height: 100vh !important;
   height: 100vh !important;
-
-  /* Option B: Fixed Custom Large Height (Agar extra bari height chahiye to) */
-  /* min-height: 900px !important; */
-
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -18,17 +13,21 @@
   background-color: #051a17;
 }
 
-/* Background Layer Stretch Fix */
-.hero-bg {
+/* Background Slide Image Wrapper & Fit Fix */
+.hero-slide {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-position: center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
   z-index: 1;
   will-change: transform, opacity;
+}
+
+.hero-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 /* Overlay stretch fix */
@@ -44,6 +43,7 @@
     rgba(5, 26, 23, 0.85) 100%
   );
   z-index: 2;
+  pointer-events: none;
 }
 
 /* Content Container Alignment */
@@ -51,7 +51,7 @@
   position: relative;
   z-index: 3;
   max-width: 860px;
-  margin: auto; /* Vertically centered inside full height hero */
+  margin: auto;
 }
 
 /* Mask Container for Line Reveal */
@@ -124,31 +124,34 @@
   backdrop-filter: blur(8px);
 }
 
-/* ---------- Minimalist Bullets ---------- */
+/* ---------- Minimalist Bullets (Fixed Bottom Center) ---------- */
 .slide-bullets {
-  position: absolute;
-  bottom: 40px;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  position: absolute !important;
+  bottom: 35px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
 }
 
 .bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.35);
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .bullet.active {
-  width: 34px;
-  border-radius: 20px;
-  background: #ffffff;
+  width: 34px !important;
+  border-radius: 20px !important;
+  background: #ffffff !important;
 }
 
 /* ---------- Responsive ---------- */

@@ -4,30 +4,28 @@ import "./Hero.css";
 import banner1 from "./assets/IMG_0771.jpg";
 import banner2 from "./assets/IMG_0854.jpg";
 import banner3 from "./assets/IMG_1162.jpg";
+
 const slidesData = [
   {
     id: 1,
     title: "Turning Destinations into Memories.",
     description:
       "Embark on unforgettable journeys through Pakistan's most serene valleys, Lakes and rugged peaks.",
-    bgImage:
-      banner1,
+    bgImage: banner1,
   },
   {
     id: 2,
     title: "Where Every Journey Tells a Story",
     description:
-      "Travel through majestic mountains, scenic valleys, and hidden gems while creating memories with a family environment  that last a lifetime.",
-    bgImage:
-      banner2,
+      "Travel through majestic mountains, scenic valleys, and hidden gems while creating memories with a family environment that last a lifetime.",
+    bgImage: banner2,
   },
   {
     id: 3,
     title: "Experience Pakistan Like Never Before",
     description:
       "Discover breathtaking destinations, unforgettable adventures, and thoughtfully planned journeys with a registered tourism company.",
-    bgImage:
-      banner3,
+    bgImage: banner3,
   },
 ];
 
@@ -56,11 +54,11 @@ function Hero() {
         stagger: 0.06,
         ease: "power3.in",
       })
-      // Background Crossfade Exit
+      // Background Image Crossfade Exit
       .to(
-        ".hero-bg",
+        `.hero-slide:nth-child(${currentSlide + 1})`,
         {
-          opacity: 0.2,
+          opacity: 0,
           scale: 1.08,
           duration: 0.5,
           ease: "power2.inOut",
@@ -77,9 +75,9 @@ function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // Reset and Scale Background In
+      // Reset and Scale Active Background In
       gsap.fromTo(
-        ".hero-bg",
+        `.hero-slide:nth-child(${currentSlide + 1})`,
         { opacity: 0, scale: 1.15 },
         { opacity: 1, scale: 1, duration: 1.4, ease: "power3.out" }
       );
@@ -102,12 +100,12 @@ function Hero() {
     return () => ctx.revert();
   }, [currentSlide]);
 
-  // 2. Auto-Play Interval (Har 2 Seconds Baad Auto-Slide Change Fix)
+  // 2. Auto-Play Interval (5 Seconds)
   useEffect(() => {
     const autoPlayTimer = setInterval(() => {
       const nextSlideIndex = (currentSlide + 1) % slidesData.length;
       switchSlide(nextSlideIndex);
-    }, 2000); // 2000ms = 2 seconds
+    }, 5000);
 
     return () => clearInterval(autoPlayTimer);
   }, [currentSlide]);
@@ -116,14 +114,30 @@ function Hero() {
 
   return (
     <section className="hero" ref={containerRef}>
-      {/* Dynamic Background Image */}
-      <div
-        className="hero-bg"
-        style={{ backgroundImage: `url(${activeSlide.bgImage})` }}
-      />
-      <div className="hero-overlay" />
+      {/* Render all slide images in DOM to prevent any loading flash */}
+      {slidesData.map((slide, idx) => (
+        <div
+          key={slide.id}
+          className={`hero-slide ${idx === currentSlide ? "active" : ""}`}
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: idx === currentSlide ? 1 : 0,
+            zIndex: idx === currentSlide ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
+          }}
+        >
+          <img
+            src={slide.bgImage}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </div>
+      ))}
 
-      <div className="hero-inner">
+      <div className="hero-overlay" style={{ zIndex: 2, position: "relative" }} />
+
+      <div className="hero-inner" style={{ zIndex: 3, position: "relative" }}>
         {/* Animated Title */}
         <div className="mask-wrapper">
           <h1 className="reveal-text">{activeSlide.title}</h1>
@@ -146,7 +160,7 @@ function Hero() {
       </div>
 
       {/* Minimalist Slide Bullets */}
-      <div className="slide-bullets">
+      <div className="slide-bullets" style={{ zIndex: 3, position: "relative" }}>
         {slidesData.map((_, idx) => (
           <button
             key={idx}
