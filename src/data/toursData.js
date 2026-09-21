@@ -2,13 +2,13 @@
 
 // Local Tour Images Import
 import naranImg from "../tourImg/Naran.jpeg";
-import swatImg from "../tourImg/Swat.jpeg";
+import swatImg from "../tourImg/swat.jpeg";
 import kashmirImg from "../tourImg/Kashmir.jpeg";
 import kumratImg from "../tourImg/Kumrat.jpeg";
-import hunzaImg from "../tourImg/Hunza.jpeg";
-import fairyMeadowsImg from "../tourImg/FairyMeadows.jpeg";
-import skarduImg from "../tourImg/Skardu.jpeg";
-import hunzaSkarduImg from "../tourImg/HunzaSkardu.jpeg";
+import hunzaImg from "../tourImg/hunza.jpeg";
+import fairyMeadowsImg from "../tourImg/fairymeadows.jpeg";
+import skarduImg from "../tourImg/skardu.jpeg";
+import hunzaSkarduImg from "../tourImg/hunzaskardu.jpeg";
 
 export const toursData = [
   {
