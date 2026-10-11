@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Expeditions.css";
 
-import naranImg from "./tourImg/Naran.jpeg";
-import swatImg from "./tourImg/swat.jpeg";
-import kashmirImg from "./tourImg/Kashmir.jpeg";
-import kumratImg from "./tourImg/kumrat.jpeg";
-import hunzaImg from "./tourImg/hunza.jpeg";
-import fairyMeadowsImg from "./tourImg/fairymeadows.jpeg";
-import skarduImg from "./tourImg/skardu.jpeg";
-import hunzaSkarduImg from "./tourImg/hunzaskardu.jpeg";
+import naranImg from "./tourImg/Naran.webp";
+import swatImg from "./tourImg/swat.webp";
+import kashmirImg from "./tourImg/Kashmir.webp";
+import kumratImg from "./tourImg/kumrat.webp";
+import hunzaImg from "./tourImg/hunza.webp";
+import fairyMeadowsImg from "./tourImg/fairymeadows.webp";
+import skarduImg from "./tourImg/skardu.webp";
+import hunzaSkarduImg from "./tourImg/hunzaskardu.webp";
 
 const expeditionsData = [
-  { id: 1, slug: "naran-valley", title: "Naran Valley", image: naranImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "44,000" },
-  { id: 2, slug: "swat-valley", title: "Swat Valley", image: swatImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "44,000" },
-  { id: 3, slug: "kashmir", title: "Kashmir", image: kashmirImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "44,000" },
+  { id: 1, slug: "naran-valley", title: "Naran Valley", image: naranImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "42,000" },
+  { id: 2, slug: "swat-valley", title: "Swat Valley", image: swatImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "42,000" },
+  { id: 3, slug: "kashmir", title: "Kashmir", image: kashmirImg, badge: "3 Days", departure: "Departures: Mon & Thu Night", price: "PKR 18,500", solo: "18,500", couple: "42,000" },
   { id: 4, slug: "kumrat-jhazbanda", title: "Kumrat & Jhazbanda", image: kumratImg, badge: "4 Days", departure: "Departures: Wed Night", price: "PKR 25,000", solo: "25,000", couple: "55,000" },
   { id: 5, slug: "hunza-khunjrab-pass", title: "Hunza & Khunjrab Pass", image: hunzaImg, badge: "5 Days", departure: "Departures: Tue & Fri Night", price: "PKR 29,000", solo: "29,000", couple: "65,000" },
   { id: 6, slug: "fairy-meadows", title: "Fairy Meadows", image: fairyMeadowsImg, badge: "5 Days", departure: "Departures: Tue & Fri Night", price: "PKR 29,000", solo: "29,000", couple: "65,000" },

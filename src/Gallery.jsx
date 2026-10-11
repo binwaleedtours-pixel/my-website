@@ -3,13 +3,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Gallery.css";
 
-import img1 from "./gallerySection/IMG_0644.jpg";
-import img2 from "./gallerySection/IMG_2795.jpg";
-import img3 from "./gallerySection/IMG_2871.jpg";
-import img4 from "./gallerySection/IMG_2926.jpg";
-import img5 from "./gallerySection/IMG_4409.jpg";
-import img6 from "./gallerySection/IMG_4440.jpg";
-import img7 from "./gallerySection/IMG_4497.jpg";
+import img1 from "./gallerySection/IMG_0644.webp";
+import img2 from "./gallerySection/IMG_2795.webp";
+import img3 from "./gallerySection/IMG_2871.webp";
+import img4 from "./gallerySection/IMG_2926.webp";
+import img5 from "./gallerySection/IMG_4409.webp";
+import img6 from "./gallerySection/IMG_4440.webp";
+import img7 from "./gallerySection/IMG_4497.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

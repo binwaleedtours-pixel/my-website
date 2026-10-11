@@ -1,14 +1,14 @@
 // File Path: src/data/toursData.js
 
 // Local Tour Images Import
-import naranImg from "../tourImg/Naran.jpeg";
-import swatImg from "../tourImg/swat.jpeg";
-import kashmirImg from "../tourImg/Kashmir.jpeg";
-import kumratImg from "../tourImg/kumrat.jpeg";
-import hunzaImg from "../tourImg/hunza.jpeg";
-import fairyMeadowsImg from "../tourImg/fairymeadows.jpeg";
-import skarduImg from "../tourImg/skardu.jpeg";
-import hunzaSkarduImg from "../tourImg/hunzaskardu.jpeg";
+import naranImg from "../tourImg/Naranp.webp";
+import swatImg from "../tourImg/swatp.webp";
+import kashmirImg from "../tourImg/Kashmirp.webp";
+import kumratImg from "../tourImg/kumratp.webp";
+import hunzaImg from "../tourImg/hunzap.webp";
+import fairyMeadowsImg from "../tourImg/fairymeadowsp.webp";
+import skarduImg from "../tourImg/skardup.webp";
+import hunzaSkarduImg from "../tourImg/hunzaskardup.webp";
 
 export const toursData = [
   {
@@ -189,7 +189,7 @@ export const toursData = [
     rating: 5.0,
     reviewsCount: 68,
     heroImage: hunzaImg,
-
+    coupleSurcharge: 7000,
     pdfUrl: "/pdfs/5DaysHunza&ChinaBoarder.pdf",
 
     overview:
@@ -224,7 +224,7 @@ export const toursData = [
     rating: 4.9,
     reviewsCount: 45,
     heroImage: fairyMeadowsImg,
-
+    coupleSurcharge: 7000,
     pdfUrl: "/pdfs/5Days-FairyMeadows,Naran&NangaParbat.pdf",
 
     overview: "Stand face to face with Nanga Parbat from wooden cabins.",
@@ -258,7 +258,7 @@ export const toursData = [
     rating: 5.0,
     reviewsCount: 38,
     heroImage: skarduImg,
-
+    coupleSurcharge: 10000,
     // Note: Ensure you have 'skardu-expedition-itinerary.pdf' inside public/pdfs folder,
     // or update this filename to match what is physically in your public/pdfs folder.
     pdfUrl: "/pdfs/skardu-expedition-itinerary.pdf",
@@ -295,7 +295,7 @@ export const toursData = [
     rating: 5.0,
     reviewsCount: 74,
     heroImage: hunzaSkarduImg,
-
+    coupleSurcharge: 9000,
     pdfUrl: "/pdfs/8DaysHunza&SkarduValley.pdf",
 
     overview:

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./Hero.css";
-import banner1 from "./assets/IMG_0771.jpg";
-import banner2 from "./assets/IMG_0854.jpg";
-import banner3 from "./assets/IMG_1162.jpg";
+import banner1 from "./assets/b3.webp";
+import banner2 from "./assets/b2.webp";
+import banner3 from "./assets/b1.webp";
 
 const slidesData = [
   {

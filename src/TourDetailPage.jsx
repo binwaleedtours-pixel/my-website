@@ -50,8 +50,8 @@ function TourDetailPage() {
 
   const unitPrice = getNumericPrice(tour.price);
   const basePrice = unitPrice * Number(formData.persons);
-  const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? 5000 : 0;
-  const totalPrice = basePrice + coupleSurcharge;
+const coupleRate = tour.coupleSurcharge ?? 5000; // tour mein na ho to default 5000
+const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRate : 0;  const totalPrice = basePrice + coupleSurcharge;
 
   const handleChange = (e) => {
     const { name, value } = e.target;

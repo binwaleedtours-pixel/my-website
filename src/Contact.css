@@ -7,13 +7,15 @@
   position: relative;
   width: 100%;
   height: 320px;
-  background: url("./assets/Banner.png")
-    no-repeat center center/cover;
+  background-image: url("./assets/Banner.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 60px; /* Adjust based on fixed header height */
+  margin-top: 60px;
 }
 
 .banner-overlay {
