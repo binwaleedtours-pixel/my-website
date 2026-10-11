@@ -1,137 +1,125 @@
-/* ---------- Expeditions Section Styles ---------- */
 .expeditions {
-  background: var(--white, #ffffff);
-  padding: 100px 40px;
-  height: 100%;
+  background: #fff;
+  padding: 80px 5%;
   width: 100%;
+  box-sizing: border-box;
 }
-
 .section-headings h2 {
   font-family: "Baloo 2", sans-serif;
   font-weight: 700;
-  color: var(--ink, #0c211e) !important;
-  line-height: 1.15;
-  font-size: 38px;
-  margin-bottom: 14px;
+  color: #0c211e;
+  font-size: 36px;
+  margin-bottom: 10px;
   text-align: center;
 }
-
 .section-headings p {
   font-family: "Quicksand", sans-serif;
-  color: var(--text-muted, #5c6866);
+  color: #5c6866;
   font-size: 16px;
-  line-height: 1.5;
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 56px;
+  max-width: 650px;
+  margin: 0 auto 40px;
 }
 
 .exp-grid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .exp-card {
-  border: 1px solid var(--border-soft, #e3e1dd);
-  border-radius: 10px;
+  border: 1px solid #e3e1dd;
+  border-radius: 12px;
   overflow: hidden;
-  background: var(--white, #ffffff);
+  background: #fff;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-
 .exp-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* Yahan height ko balance kiya hai (310px) taaki zyadha lamba na lage */
 .exp-img {
   position: relative;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5; /* Isay 3/4 se barha kar 4/5 ya 10/13 kar sakte hain taaki image aur bari aur khuli dikhe */
-  background: #0f1715; /* Poster ke sath dark/clean background match karega */
+  aspect-ratio: 16/10;
+  background: #0f1715;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
 .exp-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Isse image box ke andar poori tarah fit hokar bhari hui nazar aayegi */
+  object-fit: cover;
   object-position: center;
+  transition: transform 0.3s ease;
+}
+.exp-card:hover .exp-img img {
+  transform: scale(1.03);
 }
 
 .days-badge {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background: var(--badge-brown, #6b5535);
-  color: #ffffff;
+  top: 12px;
+  right: 12px;
+  background: #6b5535;
+  color: #fff;
   font-family: "Quicksand", sans-serif;
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
 }
 
 .exp-body {
-  padding: 20px 20px 24px;
+  padding: 20px;
 }
-
 .exp-body h4 {
   font-family: "Baloo 2", sans-serif;
   font-weight: 700;
-  color: var(--ink, #0c211e);
-  font-size: 19px;
+  color: #0c211e;
+  font-size: 20px;
   margin-bottom: 6px;
 }
-
 .exp-departure {
   font-family: "Quicksand", sans-serif;
-  font-size: 13.5px;
-  color: var(--text-muted, #5c6866);
-  margin-bottom: 16px;
-}
-
-.exp-divider {
-  border-top: 1px solid var(--border-soft, #e3e1dd);
+  font-size: 13px;
+  color: #5c6866;
   margin-bottom: 14px;
+}
+.exp-divider {
+  border-top: 1px solid #e3e1dd;
+  margin-bottom: 12px;
 }
 
 .exp-price-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-family: "Quicksand", sans-serif;
 }
-
 .exp-price-row .label {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
-  color: var(--badge-brown, #6b5535);
+  color: #6b5535;
 }
-
 .exp-price-row .value {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--ink, #0c211e);
+  color: #0c211e;
 }
 
 .exp-sub {
   display: flex;
   justify-content: space-between;
   font-family: "Quicksand", sans-serif;
-  font-size: 12.5px;
-  color: var(--text-muted-2, #8a9491);
+  font-size: 12px;
+  color: #8a9491;
+  margin-bottom: 16px;
 }
 
 .exp-img-link,
@@ -140,50 +128,42 @@
   color: inherit;
   display: block;
 }
-
 .exp-title-link h4:hover {
-  color: var(--green-accent, #00c853);
-  transition: color 0.2s ease;
-}
-
-.exp-actions {
-  margin-top: 15px;
-  width: 100%;
+  color: #00c853;
+  transition: color 0.2s;
 }
 
 .btn-exp-book {
   display: block;
   width: 100%;
   text-align: center;
-  padding: 12px 16px;
-  background-color: #00c853;
-  color: #ffffff;
+  padding: 12px;
+  background: #00c853;
+  color: #fff;
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none;
   transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+    background 0.2s,
+    transform 0.2s;
+  box-sizing: border-box;
 }
-
 .btn-exp-book:hover {
-  background-color: #009624;
+  background: #009624;
   transform: translateY(-1px);
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 980px) {
+/* Responsive */
+@media (max-width: 992px) {
   .exp-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-@media (max-width: 560px) {
-  .expeditions {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+@media (max-width: 600px) {
   .exp-grid {
     grid-template-columns: 1fr;
+  }
+  .expeditions {
+    padding: 50px 20px;
   }
 }
