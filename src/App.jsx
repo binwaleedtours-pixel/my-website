@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Standard Components
 import Header from "./header";
@@ -21,8 +23,11 @@ import GalleryPage from "./GalleryPage";
 import TourDetailPage from "./TourDetailPage";
 import Privacypolicy from "./Privacypolicy";
 import Termandconditions from "./Termandconditions";
+import OurTour from "./OurTour";
 // GSAP Preloader Component
-import Preloader from "./Preloader"; 
+import Preloader from "./Preloader";
+import Reviews from "./Reviews";
+gsap.registerPlugin(ScrollTrigger);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,24 +49,45 @@ function Home() {
       <AboutSection />
       <Features />
       <VideoCarousel />
+            <Reviews />
+
     </>
   );
 }
 
 function App() {
   const [loading, setLoading] = useState(() => {
-    return !sessionStorage.getItem("hasVisited");
+    try {
+      return !sessionStorage.getItem("hasVisited");
+    } catch {
+      return true;
+    }
   });
 
-  const handlePreloaderComplete = () => {
-    sessionStorage.setItem("hasVisited", "true");
+  const handlePreloaderComplete = useCallback(() => {
+    try {
+      sessionStorage.setItem("hasVisited", "true");
+    } catch {
+      /* ignore */
+    }
     setLoading(false);
-  };
+  }, []);
+
+  // Preloader ke baad ScrollTrigger positions dobara calculate karo
+  useEffect(() => {
+    if (!loading) {
+      const t = setTimeout(() => ScrollTrigger.refresh(), 150);
+      return () => clearTimeout(t);
+    }
+  }, [loading]);
+
+  // Jab tak preloader chal raha hai, sirf preloader dikhao
+  if (loading) {
+    return <Preloader onComplete={handlePreloaderComplete} />;
+  }
 
   return (
     <>
-      {loading && <Preloader onComplete={handlePreloaderComplete} />}
-
       <ScrollToTop />
       <Header />
 
@@ -70,7 +96,7 @@ function App() {
         <Route path="/tour/:slug" element={<TourDetailPage />} />
         <Route path="/AboutPage" element={<AboutPage />} />
         <Route path="/galleryPage" element={<GalleryPage />} />
-        <Route path="/tours" element={<Expeditions />} />
+        <Route path="/ourTour" element={<OurTour />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacypolicy" element={<Privacypolicy />} />
         <Route path="/termandconditions" element={<Termandconditions />} />

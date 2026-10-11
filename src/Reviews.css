@@ -1,0 +1,266 @@
+.reviews-section {
+  background: #03120f;
+  padding: 80px 40px;
+  color: #fff;
+}
+.reviews-section .rv-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.reviews-section .rv-title {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.reviews-section .rv-eyebrow {
+  display: block;
+  color: #d4af37;
+  font:
+    700 11.5px "Quicksand",
+    sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.reviews-section h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 38px;
+  margin: 0;
+  color: #fff;
+}
+.reviews-section .rv-empty {
+  text-align: center;
+  color: #9fb0ab;
+  padding: 30px 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* ---------- Carousel ---------- */
+.reviews-section .rv-carousel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.reviews-section .rv-track {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 6px 2px;
+}
+.reviews-section .rv-track::-webkit-scrollbar {
+  display: none;
+}
+.reviews-section .rv-arrow {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  background: transparent;
+  color: #d4af37;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0 4px;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.reviews-section .rv-arrow:hover {
+  background: #d4af37;
+  color: #03120f;
+}
+
+/* ---------- Cards ---------- */
+.reviews-section .rv-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 22px;
+  min-height: 220px;
+  transition: border-color 0.3s;
+}
+.reviews-section .rv-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+}
+.reviews-section .rv-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.reviews-section .rv-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d4af37;
+  color: #03120f;
+  font:
+    700 18px "Baloo 2",
+    sans-serif;
+}
+.reviews-section .rv-who {
+  min-width: 0;
+}
+.reviews-section .rv-who strong {
+  display: block;
+  font:
+    700 15px "Quicksand",
+    sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reviews-section .rv-who small {
+  color: #9fb0ab;
+  font-size: 12px;
+}
+.reviews-section .rv-stars span {
+  color: #4a5a56;
+}
+.reviews-section .rv-stars span.on {
+  color: #d4af37;
+}
+.reviews-section .rv-text {
+  margin: 12px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #dfe7e4;
+  word-break: break-word;
+}
+
+/* ---------- Form ---------- */
+.reviews-section .rv-form {
+  max-width: 560px;
+  margin: 60px auto 0;
+  padding: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.reviews-section .rv-form h3 {
+  font:
+    700 26px "Baloo 2",
+    sans-serif;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+}
+.reviews-section .rv-form input[type="text"],
+.reviews-section .rv-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  padding: 13px 14px;
+  color: #fff;
+  font:
+    500 14.5px "Quicksand",
+    sans-serif;
+  outline: none;
+  resize: vertical;
+}
+.reviews-section .rv-form input:focus,
+.reviews-section .rv-form textarea:focus {
+  border-color: #d4af37;
+}
+.reviews-section .rv-form ::placeholder {
+  color: #8a9b96;
+}
+.reviews-section .rv-pick {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+.reviews-section .rv-pick button {
+  background: none;
+  border: none;
+  font-size: 34px;
+  color: #4a5a56;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    color 0.15s;
+  padding: 0 2px;
+}
+.reviews-section .rv-pick button.on {
+  color: #d4af37;
+}
+.reviews-section .rv-pick button:hover {
+  transform: scale(1.15);
+}
+.reviews-section .rv-submit {
+  background: #d4af37;
+  color: #03120f;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font:
+    700 13px "Quicksand",
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+}
+.reviews-section .rv-submit:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+.reviews-section .rv-msg {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+}
+.reviews-section .rv-msg.ok {
+  color: #6ee7a0;
+}
+.reviews-section .rv-msg.err {
+  color: #ff8a8a;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .reviews-section {
+    padding: 60px 24px;
+  }
+  .reviews-section .rv-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+}
+@media (max-width: 620px) {
+  .reviews-section {
+    padding: 50px 16px;
+  }
+  .reviews-section h2 {
+    font-size: 30px;
+  }
+  .reviews-section .rv-card {
+    flex: 0 0 100%;
+  }
+  .reviews-section .rv-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+  .reviews-section .rv-carousel {
+    gap: 8px;
+  }
+  .reviews-section .rv-form {
+    padding: 20px;
+  }
+}

@@ -1,7 +1,7 @@
-/* ---------- Split Cards Section Styles (Compact Height) ---------- */
+/* ---------- Split Cards Section (Fully Scoped & Merged) ---------- */
 .split-cards {
-  padding: 50px 40px; /* Reduced vertical padding */
-  min-height: 720px; /* Height reduced from 100vh to 520px */
+  padding: 50px 40px;
+  min-height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@
   background: #03120f;
 }
 
-.split-grid {
+.split-cards .split-grid {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -19,9 +19,9 @@
   gap: 24px;
 }
 
-.split-card {
+.split-cards .split-card {
   position: relative;
-  height: 340px; /* Card height reduced from 440px to 340px */
+  height: 340px;
   border-radius: 18px;
   overflow: hidden;
   display: flex;
@@ -36,14 +36,14 @@
     box-shadow 0.3s ease;
 }
 
-.split-card:hover {
+.split-cards .split-card:hover {
   border-color: rgba(212, 175, 55, 0.5);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.6),
     0 0 20px rgba(212, 175, 55, 0.15);
 }
 
-.split-card::after {
+.split-cards .split-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -54,14 +54,14 @@
   );
 }
 
-.split-card .split-content {
+.split-cards .split-card .split-content {
   position: relative;
   z-index: 2;
-  padding: 28px 28px; /* Content padding adjust */
+  padding: 28px;
   color: #fff;
 }
 
-.split-card .eyebrow {
+.split-cards .split-card .eyebrow {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 11.5px;
@@ -72,16 +72,17 @@
   font-family: "Quicksand", sans-serif;
 }
 
-.split-card h3 {
+.split-cards .split-card h3 {
   font-family: "Baloo 2", sans-serif;
-  font-size: 30px; /* Font size adjusted according to card height */
+  font-size: 30px;
   font-weight: 700;
   color: #fff;
   line-height: 1.15;
+  margin-top: 0;
   margin-bottom: 16px;
 }
 
-.tag-btn {
+.split-cards .tag-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -101,19 +102,21 @@
     box-shadow 0.25s ease;
 }
 
-.tag-btn:hover {
+.split-cards .tag-btn:hover {
   transform: translateY(-2px);
   background: #ffffff;
+  color: #03120f;
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
 }
 
-.card-1 {
+/* Fallback images (JSX ke inline style wali images inko override kar deti hain) */
+.split-cards .card-1 {
   background-image:
     linear-gradient(180deg, rgba(10, 10, 20, 0.15), rgba(0, 0, 0, 0.4)),
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80");
 }
 
-.card-2 {
+.split-cards .card-2 {
   background-image:
     linear-gradient(180deg, rgba(10, 10, 20, 0.05), rgba(0, 0, 0, 0.3)),
     url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80");
@@ -125,7 +128,7 @@
     min-height: auto;
     padding: 40px 24px;
   }
-  .split-grid {
+  .split-cards .split-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -134,7 +137,7 @@
   .split-cards {
     padding: 30px 16px;
   }
-  .split-card {
+  .split-cards .split-card {
     height: 300px;
   }
 }

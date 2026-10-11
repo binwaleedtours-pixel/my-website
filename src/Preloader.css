@@ -4,6 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background-color: #051a17;
   z-index: 99999;
   overflow: hidden;
@@ -12,7 +13,7 @@
   justify-content: center;
 }
 
-.tube-container {
+.preloader-overlay-wrapper .tube-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,21 +22,22 @@
   visibility: hidden;
 }
 
-.tube {
+.preloader-overlay-wrapper .tube {
   position: relative;
   width: 100%;
   height: 16vw;
 }
 
-.line {
+.preloader-overlay-wrapper .line {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  perspective: 700px;
+  transform-style: preserve-3d;
   line-height: 1;
   margin: 0;
   letter-spacing: 0.1vw;
-  /* Font size ko chota kar ke 4.5vw kar diya gaya hai */
   font-size: 4.5vw;
   font-family: "Baloo 2", sans-serif;
   font-weight: 800;
@@ -45,14 +47,14 @@
   text-transform: uppercase;
 }
 
-.line .char {
+.preloader-overlay-wrapper .line .char {
   display: inline-block;
   backface-visibility: hidden;
-  will-change: transform;
+  opacity: 0; /* animation shuru hone se pehle flash na ho */
 }
 
 @media (max-width: 768px) {
-  .line {
-    font-size: 7vw; /* Mobile screens par readable sizing */
+  .preloader-overlay-wrapper .line {
+    font-size: 7vw;
   }
 }

@@ -24,10 +24,12 @@ const expeditionsData = [
 
 export default function Expeditions() {
   return (
+    
     <section className="expeditions" id="tours">
+      
       <div className="section-headings">
         <h2>Featured Expeditions</h2>
-        <p>Curated itineraries designed to showcase alpine beauty, from weekend escapes to highland tours.</p>
+        <p>Curated itineraries designed to showcase alpine beauty. From swift weekend escapes to comprehensive highland tours.</p>
       </div>
 
       <div className="exp-grid">
@@ -63,6 +65,13 @@ export default function Expeditions() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* View All Button Section */}
+      <div className="view-all-wrap">
+        <Link to="/tours" className="btn-view-all">
+          View All Expeditions &rarr;
+        </Link>
       </div>
     </section>
   );

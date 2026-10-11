@@ -8,42 +8,36 @@ function CustomizeTour() {
     {
       id: 1,
       title: "Private Hunza Valley Explorer",
-      category: "Custom Tour",
       image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Private Hunza Valley Explorer tour.",
     },
     {
       id: 2,
       title: "Skardu & Shigar Luxury Trip",
-      category: "By-Air / Road Package",
       image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Skardu & Shigar Luxury Trip.",
     },
     {
       id: 3,
       title: "Fairy Meadows & Nanga Parbat",
-      category: "Adventure Trek",
       image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Fairy Meadows & Nanga Parbat tour.",
     },
     {
       id: 4,
       title: "Swat & Kalam Valley Getaway",
-      category: "Family Tour",
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Swat & Kalam Valley Getaway.",
     },
     {
       id: 5,
       title: "Naran Kaghan & Shogran Tour",
-      category: "Honeymoon Special",
       image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Naran Kaghan & Shogran Tour.",
     },
     {
       id: 6,
       title: "Kumrat Valley & Jahaz Banda",
-      category: "Explorer Camp",
       image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
       whatsappText: "Hello Bin Waleed Tours! I want to book or customize the Kumrat Valley & Jahaz Banda tour.",
     },
@@ -76,7 +70,6 @@ function CustomizeTour() {
             <div className="customize-card" key={item.id}>
               <div className="card-img-wrap">
                 <img src={item.image} alt={item.title} loading="lazy" />
-                <span className="card-badge">{item.category}</span>
               </div>
               <div className="card-content">
                 <h3>{item.title}</h3>

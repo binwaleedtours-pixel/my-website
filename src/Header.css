@@ -1,11 +1,11 @@
-/* ---------- Base Layout ---------- */
+/* ---------- Base Header Layout ---------- */
 header.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
-  background: #ffffff;
+  background: var(--cream, #ffffff);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -13,19 +13,32 @@ header.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 32px;
+  padding: 0px 32px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 10001; /* Keeps Logo and Hamburger above Drawer overlay */
 }
 
-/* Header Logo Container & Image Fix */
-.logo-container,
-.nav-wrap > a:first-child {
+/* Logo Styles */
+.logo {
   display: flex;
   align-items: center;
-  height: 45px; /* Header ke andar logo area ki fix height */
+  gap: 10px;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  color: var(--ink, #0c211e);
+}
+
+.logo .mark {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }
 
 .logo-img {
@@ -36,49 +49,86 @@ header.header {
   display: block;
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation Links */
 nav.desktop-links {
   display: flex;
   gap: 32px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 15.5px;
 }
 
 nav.desktop-links a {
   text-decoration: none;
-  color: #0c211e;
+  color: var(--ink, #0c211e);
+  position: relative;
+  padding-bottom: 4px;
   transition: color 0.2s ease;
 }
 
-nav.desktop-links a.active {
-  color: #0c211e;
-  border-bottom: 2px solid #e6c182;
+nav.desktop-links a:hover {
+  color: #4d6a63;
 }
 
+nav.desktop-links a.active {
+  color: var(--ink, #0c211e);
+  border-bottom: 2px solid var(--gold, #e6c182);
+}
+
+/* ---------- Button Variations (Merged from index.css) ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   font-family: "Quicksand", sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  padding: 11px 22px;
+  font-size: 14.5px;
+  padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
 }
 
 .btn-dark {
-  background: #051a17;
+  background: var(--green-deep, #051a17);
   color: #ffffff;
 }
 
 .btn-gold {
-  background: #e6c182;
-  color: #051a17;
+  background: var(--gold, #e6c182);
+  color: var(--green-deep, #051a17);
   width: 100%;
 }
 
+.btn-green {
+  background: var(--green-accent, #00c853);
+  color: #ffffff;
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--ink, #0c211e);
+  border: 1px solid rgba(12, 33, 30, 0.5);
+}
+
+/* Hamburger Toggle Button */
 .hamburger-btn {
   display: none;
   background: transparent;
@@ -98,6 +148,15 @@ nav.desktop-links a.active {
     display: none !important;
   }
 
+  .nav-wrap {
+    padding: 0 16px;
+  }
+
+  .logo-img {
+    height: 64px;
+    max-height: 64px;
+  }
+
   .hamburger-btn {
     display: flex;
     align-items: center;
@@ -113,8 +172,8 @@ nav.desktop-links a.active {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #051a17; /* Dark elegant mobile background */
-    padding: 110px 32px 40px;
+    background: var(--green-deep, #051a17);
+    padding: 90px 32px 40px;
     box-sizing: border-box;
     transform: translateY(-100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,10 +200,19 @@ nav.desktop-links a.active {
   }
 
   nav.mobile-links a.active {
-    color: #e6c182;
+    color: var(--gold, #e6c182);
+    border-bottom: none;
   }
 
   .mobile-action {
     width: 100%;
+  }
+}
+
+/* ---------- Small Mobile ---------- */
+@media (max-width: 560px) {
+  .logo-img {
+    height: 56px;
+    max-height: 56px;
   }
 }

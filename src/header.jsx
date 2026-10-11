@@ -27,8 +27,8 @@ function Header() {
           <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
             Home
           </NavLink>
-          <NavLink to="/tours" className={({ isActive }) => (isActive ? "active" : "")}>
-            Tours
+          <NavLink to="/OurTour" className={({ isActive }) => (isActive ? "active" : "")}>
+          Our Tours
           </NavLink>
           <NavLink to="/AboutPage" className={({ isActive }) => (isActive ? "active" : "")}>
             About
@@ -73,8 +73,9 @@ function Header() {
           <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             Home
           </NavLink>
-          <NavLink to="/tours" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
-            Tours
+          <NavLink to="/OurTour" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
+                      Our Tours
+
           </NavLink>
           <NavLink to="/AboutPage" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             About Us
