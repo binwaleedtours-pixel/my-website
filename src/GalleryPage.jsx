@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./GalleryPage.css";
 
 // Screenshot ke mutabiq sabhi images ki imports
@@ -156,10 +155,7 @@ const galleryImages = [
   { id: 74, url: img74 },
   { id: 75, url: img75 },
 ];
-
 function GalleryPage() {
-  const [selectedImg, setSelectedImg] = useState(null);
-
   return (
     <div className="gallery-page">
       {/* ---------- Top Page Banner ---------- */}
@@ -178,39 +174,26 @@ function GalleryPage() {
       </div>
 
       {/* ---------- Main Content / Grid ---------- */}
-      <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+      <div
+        className="container"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+        }}
+      >
         <div className="magazine-grid">
           {galleryImages.map((img, index) => (
             <div
               key={img.id}
               className="gallery-card"
               style={{ animationDelay: `${index * 0.02}s` }}
-              onClick={() => setSelectedImg(img)}
             >
               <img src={img.url} alt="Gallery item" />
-              <div className="card-info">
-                <span className="view-link">View Fullscreen ↗</span>
-              </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* ---------- Lightbox Pop-up ---------- */}
-      {selectedImg && (
-        <div className="lightbox-modal" onClick={() => setSelectedImg(null)}>
-          <div className="lightbox-wrapper" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="close-btn"
-              onClick={() => setSelectedImg(null)}
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            <img src={selectedImg.url} alt="Fullscreen preview" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
