@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 import "./Hero.css";
 import banner1 from "./assets/b3.webp";
 import banner2 from "./assets/b2.webp";
