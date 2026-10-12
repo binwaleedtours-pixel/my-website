@@ -1,6 +1,7 @@
 
 import "./GalleryPage.css";
-
+import { useState, useEffect, useRef, useCallback } from "react";
+import "./GalleryPage.css";
 // Screenshot ke mutabiq sabhi images ki imports
 
 import img1 from "./gallery/IMG_0644.webp";
@@ -97,8 +98,59 @@ const galleryImages = [
   { id: 73, url: img73 },
   { id: 75, url: img75 },
 ];
-
 function GalleryPage() {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+
+  const isOpen = selectedIndex !== null;
+
+  const closeLightbox = useCallback(() => setSelectedIndex(null), []);
+
+  const showNext = useCallback(() => {
+    setSelectedIndex((i) => (i + 1) % galleryImages.length);
+  }, []);
+
+  const showPrev = useCallback(() => {
+    setSelectedIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length);
+  }, []);
+
+  // Keyboard controls
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen, closeLightbox, showNext, showPrev]);
+
+  // Lightbox khulne par background scroll band
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  // Swipe handlers
+  const onTouchStart = (e) => {
+    touchEndX.current = null;
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? showNext() : showPrev();
+    }
+  };
+
   return (
     <div className="gallery-page">
       {/* ---------- Top Page Banner ---------- */}
@@ -131,12 +183,67 @@ function GalleryPage() {
               key={img.id}
               className="gallery-card"
               style={{ animationDelay: `${index * 0.02}s` }}
+              onClick={() => setSelectedIndex(index)}
             >
-              <img src={img.url} alt="Gallery item" />
+              <img src={img.url} alt="Gallery item" loading="lazy" />
             </div>
           ))}
         </div>
       </div>
+
+      {/* ---------- Lightbox ---------- */}
+      {isOpen && (
+        <div className="lightbox-modal" onClick={closeLightbox}>
+          <button
+            className="close-btn"
+            onClick={closeLightbox}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          <button
+            className="nav-btn nav-prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              showPrev();
+            }}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+          <div
+            className="lightbox-stage"
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
+            <img
+              key={galleryImages[selectedIndex].id}
+              src={galleryImages[selectedIndex].url}
+              alt="Gallery preview"
+              className="lightbox-img"
+              draggable={false}
+            />
+            {/* <div className="lightbox-counter">
+              {selectedIndex + 1} / {galleryImages.length}
+            </div> */}
+          </div>
+
+          <button
+            className="nav-btn nav-next"
+            onClick={(e) => {
+              e.stopPropagation();
+              showNext();
+            }}
+            aria-label="Next image"
+          >
+            ›
+          </button>
+        </div>
+      )}
     </div>
   );
 }
