@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Contact.css";
 
-function Contact() {
+function Contact_Us() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -195,4 +195,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Contact_Us;

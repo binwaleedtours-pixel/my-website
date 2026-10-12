@@ -13,13 +13,13 @@ import Gallery from "./Gallery";
 import AboutSection from "./AboutSection";
 import Features from "./Features";
 import VideoCarousel from "./VideoCarousel";
-import Contact from "./Contact";
+import Contact_Us from "./Contact_Us";
 import Footer from "./Footer";
 
 // Page Views
 import CustomizeTour from "./CustomizeTour";
-import AboutPage from "./AboutPage";
-import GalleryPage from "./GalleryPage";
+import About from "./About";
+import Our_Gallery from "./Our_Gallery";
 import TourDetailPage from "./TourDetailPage";
 import Privacypolicy from "./Privacypolicy";
 import Termandconditions from "./Termandconditions";
@@ -94,10 +94,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tour/:slug" element={<TourDetailPage />} />
-        <Route path="/AboutPage" element={<AboutPage />} />
-        <Route path="/galleryPage" element={<GalleryPage />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Our_Gallery" element={<Our_Gallery />} />
         <Route path="/ourTour" element={<OurTour />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/Contact_Us" element={<Contact_Us />} />
         <Route path="/privacypolicy" element={<Privacypolicy />} />
         <Route path="/termandconditions" element={<Termandconditions />} />
         <Route path="/customizetours" element={<CustomizeTour />} />

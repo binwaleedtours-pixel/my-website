@@ -25,8 +25,8 @@ function Footer() {
           <ul className="footer-links">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/OurTour">Our Tours</Link></li>
-            <li><Link to="/GalleryPage">Gallery</Link></li>
-            <li><Link to="/aboutPage">About Us</Link></li>
+            <li><Link to="/Our_Gallery">Gallery</Link></li>
+            <li><Link to="/About">About Us</Link></li>
           </ul>
         </div>
 
@@ -34,7 +34,7 @@ function Footer() {
         <div>
           <h5>Support</h5>
           <ul className="footer-links">
-            <li><Link to="/contact">Contact Us</Link></li>
+            <li><Link to="/Contact_Us">Contact Us</Link></li>
             <li><Link to="/privacypolicy">Privacy Policy</Link></li>
             <li><Link to="/termandconditions">Terms and Conditions</Link></li>
           </ul>

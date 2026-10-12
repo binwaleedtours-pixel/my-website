@@ -4,7 +4,7 @@ import "./AboutPage.css";
 import Gallery from "./Gallery";
 import founderImg from "./assets/founder.png";
   import ceoImg from "./assets/ceo.png";
-function AboutPage() {
+function About() {
   return (
     <div className="about-page">
       {/* Standard Hero Banner with Breadcrumbs */}
@@ -161,4 +161,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default About;

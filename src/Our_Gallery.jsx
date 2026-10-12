@@ -98,7 +98,7 @@ const galleryImages = [
   { id: 73, url: img73 },
   { id: 75, url: img75 },
 ];
-function GalleryPage() {
+function Our_Gallery() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
@@ -248,4 +248,4 @@ function GalleryPage() {
   );
 }
 
-export default GalleryPage;
+export default Our_Gallery;

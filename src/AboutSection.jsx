@@ -50,10 +50,10 @@ Whether you're travelling with family, friends, or looking for your next adventu
             </div>
 
             <div className="about-buttons">
-              <Link to="/AboutPage" className="btn btn-primary">
+              <Link to="/About" className="btn btn-primary">
                 Explore Our Story <span>↗</span>
               </Link>
-              <Link to="/contact" className="btn btn-outline">
+              <Link to="/Contact_Us" className="btn btn-outline">
                 Plan Custom Trip
               </Link>
             </div>

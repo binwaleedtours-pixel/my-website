@@ -151,7 +151,7 @@ function Hero() {
 
         {/* Fixed Action Buttons */}
         <div className="hero-buttons">
-          <a href="/contact" className="btn btn-dark">
+          <a href="/Contact_Us" className="btn btn-dark">
             Book Now →
           </a>
           <a href="#tours" className="btn btn-outline-light">

@@ -30,19 +30,19 @@ function Header() {
           <NavLink to="/OurTour" className={({ isActive }) => (isActive ? "active" : "")}>
           Our Tours
           </NavLink>
-          <NavLink to="/AboutPage" className={({ isActive }) => (isActive ? "active" : "")}>
-            About
+          <NavLink to="/About" className={({ isActive }) => (isActive ? "active" : "")}>
+            About Us
           </NavLink>
-          <NavLink to="/GalleryPage" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/Our_Gallery" className={({ isActive }) => (isActive ? "active" : "")}>
             Gallery
           </NavLink>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/Contact_Us" className={({ isActive }) => (isActive ? "active" : "")}>
             Contact
           </NavLink>
         </nav>
 
         {/* Desktop Action Button */}
-        <Link to="/contact" className="btn btn-dark desktop-btn">
+        <Link to="/Contact_Us" className="btn btn-dark desktop-btn">
           Book Now
         </Link>
 
@@ -77,19 +77,19 @@ function Header() {
                       Our Tours
 
           </NavLink>
-          <NavLink to="/AboutPage" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
+          <NavLink to="/About" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             About Us
           </NavLink>
-          <NavLink to="/GalleryPage" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
+          <NavLink to="/Our_Gallery" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             Gallery
           </NavLink>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
+          <NavLink to="/Contact_Us" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             Contact
           </NavLink>
         </nav>
 
         <div className="mobile-action">
-          <Link to="/contact" className="btn btn-gold" onClick={closeMenu}>
+          <Link to="/Contact_Us" className="btn btn-gold" onClick={closeMenu}>
             Book Now
           </Link>
         </div>
