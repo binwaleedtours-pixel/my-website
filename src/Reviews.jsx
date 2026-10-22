@@ -1,25 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Reviews.css";
 
-const STORAGE_KEY = "bw_reviews";
+/* Backend URL. Live karte waqt isay apne deployed backend ke URL se badal dein */
+const API = "http://localhost:5000";
 
-/* ---- Storage (baad mein yahan sirf Firebase/API laga sakte hain) ---- */
-function loadReviews() {
-  try {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(data) ? data : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveReviews(list) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-  } catch {
-    /* storage full ya blocked */
-  }
-}
+/* MongoDB ka data (_id, comment) ko component ke format (id, text) mein badalna */
+const fromApi = (r) => ({
+  id: r._id,
+  name: r.name,
+  rating: r.rating,
+  text: r.comment,
+  createdAt: r.createdAt,
+});
 
 function formatDateTime(iso) {
   return new Date(iso).toLocaleString("en-GB", {
@@ -43,11 +35,38 @@ function Stars({ value, size = 16 }) {
 }
 
 function Reviews() {
-  const [reviews, setReviews] = useState(loadReviews);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [sending, setSending] = useState(false);
   const [form, setForm] = useState({ name: "", rating: 0, text: "" });
   const [hover, setHover] = useState(0);
   const [msg, setMsg] = useState({ type: "", text: "" });
   const trackRef = useRef(null);
+
+  /* ---------- Reviews fetch (page load par) ---------- */
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(`${API}/api/reviews`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load");
+        return res.json();
+      })
+      .then((data) => {
+        if (!cancelled) setReviews(data.slice(0, 50).map(fromApi));
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const slide = (dir) => {
     const track = trackRef.current;
@@ -57,7 +76,8 @@ function Reviews() {
     track.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
-  const submit = (e) => {
+  /* ---------- Review submit ---------- */
+  const submit = async (e) => {
     e.preventDefault();
     setMsg({ type: "", text: "" });
 
@@ -68,21 +88,32 @@ function Reviews() {
       return setMsg({ type: "err", text: "Review kam az kam 10 characters ka likhein." });
     }
 
-    const newReview = {
-      id: Date.now(),
-      name: form.name.trim(),
-      rating: form.rating,
-      text: form.text.trim(),
-      createdAt: new Date().toISOString(),
-    };
+    setSending(true);
+    try {
+      const res = await fetch(`${API}/api/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          rating: form.rating,
+          comment: form.text.trim(),
+        }),
+      });
 
-    const updated = [newReview, ...reviews].slice(0, 50);
-    setReviews(updated);
-    saveReviews(updated);
-    setForm({ name: "", rating: 0, text: "" });
-    setMsg({ type: "ok", text: "Shukriya! Aap ka review add ho gaya." });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed");
 
-    if (trackRef.current) trackRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      setReviews((prev) => [fromApi(data), ...prev].slice(0, 50));
+      setLoadError(false);
+      setForm({ name: "", rating: 0, text: "" });
+      setMsg({ type: "ok", text: "Shukriya! Aap ka review add ho gaya." });
+
+      if (trackRef.current) trackRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    } catch {
+      setMsg({ type: "err", text: "Review submit nahi ho saka. Dobara koshish karein." });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -94,7 +125,11 @@ function Reviews() {
         </div>
 
         {/* ---------- Carousel ---------- */}
-        {reviews.length === 0 ? (
+        {loading ? (
+          <p className="rv-empty">Loading reviews...</p>
+        ) : loadError ? (
+          <p className="rv-empty">Reviews load nahi ho sake. Thori der baad try karein.</p>
+        ) : reviews.length === 0 ? (
           <p className="rv-empty">No reviews yet. Be the first to share your experience!</p>
         ) : (
           <div className="rv-carousel">
@@ -161,7 +196,9 @@ function Reviews() {
             required
           />
 
-          <button type="submit" className="rv-submit">Submit Review</button>
+          <button type="submit" className="rv-submit" disabled={sending}>
+            {sending ? "Submitting..." : "Submit Review"}
+          </button>
 
           {msg.text && <p className={`rv-msg ${msg.type}`}>{msg.text}</p>}
         </form>
