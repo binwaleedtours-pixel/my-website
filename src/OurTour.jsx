@@ -87,7 +87,7 @@ export default function OurTour() {
                         style={{
                           position: "absolute",
                           top: "12px",
-                          right: "12px",
+                          left: "12px",
                           background: "#ff3d00",
                           color: "#fff",
                           padding: "4px 12px",
