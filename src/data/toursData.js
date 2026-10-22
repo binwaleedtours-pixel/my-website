@@ -9,6 +9,7 @@ import hunzaImg from "../tourImg/hunzap.webp";
 import fairyMeadowsImg from "../tourImg/fairymeadowsp.webp";
 import skarduImg from "../tourImg/skardup.webp";
 import hunzaSkarduImg from "../tourImg/hunzaskardup.webp";
+export const DISCOUNT_PERCENT = 10;
 
 export const toursData = [
   {

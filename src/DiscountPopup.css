@@ -1,0 +1,312 @@
+/* ===== Discount Popup ===== */
+
+.discount-popup {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  width: 280px;
+  max-width: calc(100vw - 36px);
+  box-sizing: border-box;
+  padding: 20px 18px 16px;
+
+  background: #ffffff;
+  color: #17212b;
+  border: 1px solid #e6e9ed;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
+
+  font-family: inherit;
+  z-index: 99999;
+
+  animation: discountPopupEnter 0.5s ease both;
+}
+
+/* Close Button */
+
+.discount-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #59636e;
+
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.discount-popup-close:hover {
+  background: #f0f2f4;
+  color: #152536;
+}
+
+/* Special Offer Label */
+
+.discount-popup-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 9px;
+
+  background: #e9f6ef;
+  color: #16804a;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Heading */
+
+.discount-popup h3 {
+  margin: 0 16px 8px 0;
+  padding: 0;
+
+  color: #152536;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+/* Description */
+
+.discount-popup p {
+  margin: 0 0 14px;
+  padding: 0;
+
+  color: #59636e;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.discount-popup p strong {
+  color: #16804a;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* Book Tour Button */
+
+.discount-popup-btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+
+  background: #152536;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 6px;
+
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.discount-popup-btn:hover {
+  background: #16804a;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Bottom Note */
+
+.discount-popup-note {
+  display: block;
+  margin-top: 9px;
+
+  color: #7b858e;
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Entry Animation */
+
+@keyframes discountPopupEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .discount-popup {
+    left: 14px;
+    bottom: 14px;
+    width: 270px;
+    max-width: calc(100vw - 28px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .discount-popup {
+    left: 10px;
+    bottom: 10px;
+    width: 255px;
+    max-width: calc(100vw - 20px);
+    padding: 17px 15px 13px;
+    border-radius: 10px;
+  }
+
+  .discount-popup-tag {
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+
+  .discount-popup h3 {
+    font-size: 18px;
+    margin-bottom: 7px;
+  }
+
+  .discount-popup p {
+    font-size: 12px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .discount-popup p strong {
+    font-size: 15px;
+  }
+
+  .discount-popup-btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .discount-popup-note {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+}
+
+/* Very Small Screens */
+
+@media (max-width: 320px) {
+  .discount-popup {
+    left: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    max-width: none;
+  }
+}
+
+/* Discount heading */
+.discount-popup h3 span {
+  color: #16804a;
+}
+
+/* Countdown heading */
+.discount-countdown-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: #59636e;
+  margin-bottom: 8px;
+}
+
+/* Countdown layout */
+.discount-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.discount-time-box {
+  min-width: 0;
+  padding: 9px 2px;
+  border-radius: 6px;
+  background: #152536;
+  color: #ffffff;
+  text-align: center;
+}
+
+.discount-time-box strong {
+  display: block;
+  font-size: 19px;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+
+.discount-time-box small {
+  display: block;
+  margin-top: 3px;
+  color: #dce4eb;
+  font-size: 9px;
+}
+
+/* Weekly tour departure */
+.discount-tour-day {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 13px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #59636e;
+}
+
+.discount-tour-day span {
+  color: #16804a;
+}
+
+.discount-tour-day strong {
+  color: #152536;
+}
+
+@media (max-width: 480px) {
+  .discount-countdown {
+    gap: 5px;
+  }
+
+  .discount-time-box {
+    padding: 8px 1px;
+  }
+
+  .discount-time-box strong {
+    font-size: 17px;
+  }
+
+  .discount-time-box small {
+    font-size: 8px;
+  }
+}

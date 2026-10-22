@@ -27,6 +27,7 @@ import OurTour from "./OurTour";
 // GSAP Preloader Component
 import Preloader from "./Preloader";
 import Reviews from "./Reviews";
+import DiscountPopup from "./DiscountPopup";
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollToTop() {
@@ -104,6 +105,7 @@ function App() {
       </Routes>
 
       <Footer />
+<DiscountPopup />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { toursData } from "./data/toursData"; 
+import { toursData, DISCOUNT_PERCENT } from "./data/toursData";
 import "./TourDetailPage.css";
 
 // Yahan apni Banner.png file ko import karein
@@ -26,13 +26,18 @@ function TourDetailPage() {
   const [bookingStatus, setBookingStatus] = useState(false);
 
   // Single Main Image for Tour Card
-  const mainTourImage = tour?.heroImage || tour?.image || "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1000&auto=format&fit=crop";
+  const mainTourImage =
+    tour?.heroImage ||
+    tour?.image ||
+    "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=1000&auto=format&fit=crop";
 
   if (!tour) {
     return (
       <div style={{ padding: "100px 20px", textAlign: "center" }}>
         <h2>Tour Not Found ❌</h2>
-        <p>Searched URL Slug: <strong>"{slug}"</strong></p>
+        <p>
+          Searched URL Slug: <strong>"{slug}"</strong>
+        </p>
         <p>Yeh package humare database/toursData.js mein nahi mila.</p>
         <Link to="/" style={{ color: "#00c853", fontWeight: "bold" }}>
           ← Back to Home / Tours
@@ -48,10 +53,25 @@ function TourDetailPage() {
     return parseInt(num, 10) || 0;
   };
 
+  // ---------- Price Calculation (with Discount) ----------
   const unitPrice = getNumericPrice(tour.price);
-  const basePrice = unitPrice * Number(formData.persons);
-const coupleRate = tour.coupleSurcharge ?? 5000; // tour mein na ho to default 5000
-const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRate : 0;  const totalPrice = basePrice + coupleSurcharge;
+
+  // 🎁 Discount: tour ka apna discount ho to wo, warna global
+  const discountPercent = tour.discountPercent ?? DISCOUNT_PERCENT;
+  const discountedUnitPrice = Math.round(
+    unitPrice * (1 - discountPercent / 100)
+  );
+
+  const persons = Number(formData.persons);
+  const basePrice = discountedUnitPrice * persons;
+
+  const coupleRate = tour.coupleSurcharge ?? 5000; // tour mein na ho to default 5000
+  const coupleSurcharge =
+    formData.roomType === "Couple (Private Room)" ? coupleRate : 0;
+
+  const totalPrice = basePrice + coupleSurcharge;
+  const originalTotal = unitPrice * persons + coupleSurcharge;
+  const savedAmount = originalTotal - totalPrice;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,7 +92,7 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
     } else if (name === "persons") {
       const val = parseInt(value, 10) || 1;
       if (formData.roomType === "Couple (Private Room)" && val < 2) {
-        return; 
+        return;
       }
       setFormData((prev) => ({ ...prev, [name]: val }));
     } else {
@@ -82,14 +102,18 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
 
   const handleBookingSubmit = (e) => {
     e.preventDefault();
-    const whatsappNumber = "+923028908761"; 
+    const whatsappNumber = "+923028908761";
 
-    const message = `👋 *NEW TOUR BOOKING INQUIRY*%0A%0A` +
+    const message =
+      `👋 *NEW TOUR BOOKING INQUIRY*%0A%0A` +
       `📍 *Tour:* ${encodeURIComponent(formData.destination || tour.title)}%0A` +
       `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
       `📅 *Travel Date:* ${encodeURIComponent(formData.travelDate)}%0A` +
       `👥 *Persons:* ${encodeURIComponent(formData.persons)} Person(s)%0A` +
       `🛌 *Stay Type:* ${encodeURIComponent(formData.roomType)}%0A` +
+      (discountPercent > 0
+        ? `🎁 *Discount:* ${discountPercent}% OFF (Saved PKR ${savedAmount.toLocaleString()})%0A`
+        : "") +
       `💵 *Total Price:* PKR ${totalPrice.toLocaleString()}%0A%0A` +
       `Please confirm availability!`;
 
@@ -113,7 +137,9 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
           <div className="banner-meta">
             <span>⏱️ {tour.duration}</span>
             <span>👥 {tour.groupSize || "20-22 People"}</span>
-            <span>⭐ {tour.rating || "4.9"} ({tour.reviewsCount || 29} reviews)</span>
+            <span>
+              ⭐ {tour.rating || "4.9"} ({tour.reviewsCount || 29} reviews)
+            </span>
           </div>
         </div>
       </div>
@@ -121,10 +147,13 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
       {/* Main Content Layout */}
       <div className="container tour-content-grid">
         <div className="tour-main-details">
-          
           <section className="tour-image-card-section">
             <div className="tour-single-image-wrapper">
-              <img src={mainTourImage} alt={tour.title} className="tour-featured-image" />
+              <img
+                src={mainTourImage}
+                alt={tour.title}
+                className="tour-featured-image"
+              />
             </div>
           </section>
 
@@ -151,7 +180,9 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
                 <h3>🚀 Departure Cities</h3>
                 <div className="badge-grid">
                   {tour.tourDetails.departures?.map((dep, idx) => (
-                    <span key={idx} className="info-badge">{dep}</span>
+                    <span key={idx} className="info-badge">
+                      {dep}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -159,9 +190,17 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
               <div className="tour-info-block">
                 <h3>🛎️ Services Included</h3>
                 <ul className="services-list">
-                  <li><strong>Accommodation:</strong> {tour.tourDetails.services?.accommodation}</li>
-                  <li><strong>Food:</strong> {tour.tourDetails.services?.food}</li>
-                  <li><strong>Transportation:</strong> {tour.tourDetails.services?.transportation}</li>
+                  <li>
+                    <strong>Accommodation:</strong>{" "}
+                    {tour.tourDetails.services?.accommodation}
+                  </li>
+                  <li>
+                    <strong>Food:</strong> {tour.tourDetails.services?.food}
+                  </li>
+                  <li>
+                    <strong>Transportation:</strong>{" "}
+                    {tour.tourDetails.services?.transportation}
+                  </li>
                 </ul>
               </div>
 
@@ -199,33 +238,68 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
 
           {/* 📄 PDF Brochure Normal Open / Download Section */}
           {tour.pdfUrl && (
-            <section className="detail-section pdf-download-box" style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", border: "1px dashed #00c853", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginTop: "20px" }}>
+            <section
+              className="detail-section pdf-download-box"
+              style={{
+                background: "#f9f9f9",
+                padding: "20px",
+                borderRadius: "8px",
+                border: "1px dashed #00c853",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "15px",
+                marginTop: "20px",
+              }}
+            >
               <div>
-                <h3 style={{ margin: "0 0 5px 0", color: "#051a17" }}>📄 Complete Tour Itinerary</h3>
-                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>View or download the detailed day-by-day plan brochure.</p>
+                <h3 style={{ margin: "0 0 5px 0", color: "#051a17" }}>
+                  📄 Complete Tour Itinerary
+                </h3>
+                <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>
+                  View or download the detailed day-by-day plan brochure.
+                </p>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
-                <a 
-                  href={tour.pdfUrl} 
-                  target="_blank" 
+                <a
+                  href={tour.pdfUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="btn-download-pdf"
-                  style={{ background: "#051a17", color: "#fff", padding: "10px 16px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block", fontSize: "14px" }}
+                  style={{
+                    background: "#051a17",
+                    color: "#fff",
+                    padding: "10px 16px",
+                    borderRadius: "5px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    display: "inline-block",
+                    fontSize: "14px",
+                  }}
                 >
                   Open PDF 👁️
                 </a>
-                <a 
-                  href={tour.pdfUrl} 
+                <a
+                  href={tour.pdfUrl}
                   download
                   className="btn-download-pdf"
-                  style={{ background: "#00c853", color: "#fff", padding: "10px 16px", borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block", fontSize: "14px" }}
+                  style={{
+                    background: "#00c853",
+                    color: "#fff",
+                    padding: "10px 16px",
+                    borderRadius: "5px",
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    display: "inline-block",
+                    fontSize: "14px",
+                  }}
                 >
                   Download 📥
                 </a>
               </div>
             </section>
           )}
-
         </div>
 
         {/* Sidebar Booking Form */}
@@ -233,14 +307,46 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
           <div className="booking-card">
             <div className="price-header">
               <span className="price-label">Starting From</span>
-              <h3 className="price-val">{tour.price} <span>/ person</span></h3>
+              {discountPercent > 0 && (
+                <span
+                  style={{
+                    background: "#ff3d00",
+                    color: "#fff",
+                    padding: "3px 10px",
+                    borderRadius: "20px",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    marginLeft: "8px",
+                  }}
+                >
+                  🔥 {discountPercent}% OFF
+                </span>
+              )}
+              <h3 className="price-val">
+                {discountPercent > 0 && (
+                  <span
+                    style={{
+                      textDecoration: "line-through",
+                      opacity: 0.55,
+                      fontSize: "16px",
+                      marginRight: "8px",
+                    }}
+                  >
+                    {tour.price}
+                  </span>
+                )}
+                PKR {discountedUnitPrice.toLocaleString()} <span>/ person</span>
+              </h3>
             </div>
 
             {bookingStatus ? (
               <div className="booking-success">
                 🎉 <h4>Opening WhatsApp...</h4>
                 <p>Aap ki booking inquiry redirect kar di gayi hai.</p>
-                <button onClick={() => setBookingStatus(false)} className="btn-book-again">
+                <button
+                  onClick={() => setBookingStatus(false)}
+                  className="btn-book-again"
+                >
                   Book Another Inquiry
                 </button>
               </div>
@@ -248,32 +354,75 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
               <form onSubmit={handleBookingSubmit} className="booking-form">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="form-group">
                   <label>Travel Date</label>
-                  <input type="date" name="travelDate" value={formData.travelDate} onChange={handleChange} required />
+                  <input
+                    type="date"
+                    name="travelDate"
+                    value={formData.travelDate}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="form-group">
                   <label>Destination</label>
-                  <input type="text" name="destination" value={formData.destination || tour.title} onChange={handleChange} required />
+                  <input
+                    type="text"
+                    name="destination"
+                    value={formData.destination || tour.title}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="form-group">
                   <label>Booking / Room Type</label>
-                  <select name="roomType" value={formData.roomType} onChange={handleChange} required>
-                    <option value="Single / Group Sharing">Single / Group Sharing</option>
-                    <option value="Couple (Private Room)">Couple (Private Room)</option>
+                  <select
+                    name="roomType"
+                    value={formData.roomType}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="Single / Group Sharing">
+                      Single / Group Sharing
+                    </option>
+                    <option value="Couple (Private Room)">
+                      Couple (Private Room)
+                    </option>
                   </select>
                 </div>
 
                 <div className="form-group">
                   <label>Number of Persons</label>
-                  <input type="number" name="persons" min={formData.roomType === "Couple (Private Room)" ? "2" : "1"} max="50" value={formData.persons} onChange={handleChange} required />
+                  <input
+                    type="number"
+                    name="persons"
+                    min={formData.roomType === "Couple (Private Room)" ? "2" : "1"}
+                    max="50"
+                    value={formData.persons}
+                    onChange={handleChange}
+                    required
+                  />
                   {formData.roomType === "Couple (Private Room)" && (
-                    <small style={{ color: "#e6c182", fontSize: "11px", marginTop: "4px", display: "block" }}>
+                    <small
+                      style={{
+                        color: "#e6c182",
+                        fontSize: "11px",
+                        marginTop: "4px",
+                        display: "block",
+                      }}
+                    >
                       *Couple package requires minimum 2 persons.
                     </small>
                   )}
@@ -282,14 +431,38 @@ const coupleSurcharge = formData.roomType === "Couple (Private Room)" ? coupleRa
                 <div className="calculated-price-box">
                   <span>Total Calculated Price:</span>
                   <h4>PKR {totalPrice.toLocaleString()}</h4>
+                  {discountPercent > 0 && (
+                    <small
+                      style={{
+                        color: "#00c853",
+                        fontSize: "11.5px",
+                        fontWeight: "600",
+                        display: "block",
+                        marginTop: "4px",
+                      }}
+                    >
+                      🎁 You save PKR {savedAmount.toLocaleString()} (
+                      {discountPercent}% off)
+                    </small>
+                  )}
                   {formData.roomType === "Couple (Private Room)" && (
-                    <small style={{ color: "#00c853", fontSize: "11.5px", fontWeight: "600", display: "block", marginTop: "4px" }}>
-                      ✨ Includes Couple Private Room 
+                    <small
+                      style={{
+                        color: "#00c853",
+                        fontSize: "11.5px",
+                        fontWeight: "600",
+                        display: "block",
+                        marginTop: "4px",
+                      }}
+                    >
+                      ✨ Includes Couple Private Room
                     </small>
                   )}
                 </div>
 
-                <button type="submit" className="btn-book">Book via WhatsApp 💬</button>
+                <button type="submit" className="btn-book">
+                  Book via WhatsApp 💬
+                </button>
               </form>
             )}
           </div>

@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Fav-icon-binwaleed.png" />
+    <link rel="icon" type="image/png" href="/Fav-icon-binwaleed.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bin Waleed Tours</title>
+
     <!-- Meta Pixel Code -->
     <script>
       !(function (f, b, e, v, n, t, s) {
@@ -16,11 +17,11 @@
         };
         if (!f._fbq) f._fbq = n;
         n.push = n;
-        n.loaded = !0;
+        n.loaded = true;
         n.version = "2.0";
         n.queue = [];
         t = b.createElement(e);
-        t.async = !0;
+        t.async = true;
         t.src = v;
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
@@ -30,18 +31,22 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js",
       );
+
       fbq("init", "2036350113682727");
       fbq("track", "PageView");
     </script>
-    <noscript
-      ><img
+    <noscript>
+      <img
         height="1"
         width="1"
         style="display: none"
         src="https://www.facebook.com/tr?id=2036350113682727&ev=PageView&noscript=1"
-    /></noscript>
+        alt=""
+      />
+    </noscript>
     <!-- End Meta Pixel Code -->
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
