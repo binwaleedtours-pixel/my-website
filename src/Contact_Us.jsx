@@ -17,7 +17,7 @@ function Contact_Us() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const whatsappMsg = `Hello Bin Waleed Tours!%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Destination:* ${formData.destination}%0A*Message:* ${formData.message}`;
-    window.open(`https://wa.me/923177773141?text=${whatsappMsg}`, "_blank");
+    window.open(`https://wa.me/923028908761?text=${whatsappMsg}`, "_blank");
   };
 
   return (
