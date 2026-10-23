@@ -19,7 +19,7 @@ function TourDetailPage() {
     name: "",
     travelDate: "",
     destination: tour?.title || "",
-    persons: 1,
+    persons: "1",
     roomType: "Single / Group Sharing",
   });
 
@@ -62,7 +62,8 @@ function TourDetailPage() {
     unitPrice * (1 - discountPercent / 100)
   );
 
-  const persons = Number(formData.persons);
+  const minPersons = formData.roomType === "Couple (Private Room)" ? 2 : 1;
+  const persons = Math.max(Number(formData.persons) || 0, minPersons);
   const basePrice = discountedUnitPrice * persons;
 
   const coupleRate = tour.coupleSurcharge ?? 5000; // tour mein na ho to default 5000
@@ -81,7 +82,7 @@ function TourDetailPage() {
         setFormData((prev) => ({
           ...prev,
           roomType: value,
-          persons: prev.persons < 2 ? 2 : prev.persons,
+          persons: Number(prev.persons) < 2 ? "2" : prev.persons,
         }));
       } else {
         setFormData((prev) => ({
@@ -90,14 +91,18 @@ function TourDetailPage() {
         }));
       }
     } else if (name === "persons") {
-      const val = parseInt(value, 10) || 1;
-      if (formData.roomType === "Couple (Private Room)" && val < 2) {
-        return;
-      }
-      setFormData((prev) => ({ ...prev, [name]: val }));
+      // Sirf digits allow, khali bhi chhor sakte hain taake aaram se type ho
+      const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+      setFormData((prev) => ({ ...prev, persons: digits }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+  };
+
+  // Field se bahar nikalte hi value min (1 ya 2) aur max (50) ke andar kar do
+  const handlePersonsBlur = () => {
+    const fixed = Math.min(Math.max(Number(formData.persons) || 0, minPersons), 50);
+    setFormData((prev) => ({ ...prev, persons: String(fixed) }));
   };
 
   const handleBookingSubmit = (e) => {
@@ -109,7 +114,7 @@ function TourDetailPage() {
       `📍 *Tour:* ${encodeURIComponent(formData.destination || tour.title)}%0A` +
       `👤 *Name:* ${encodeURIComponent(formData.name)}%0A` +
       `📅 *Travel Date:* ${encodeURIComponent(formData.travelDate)}%0A` +
-      `👥 *Persons:* ${encodeURIComponent(formData.persons)} Person(s)%0A` +
+      `👥 *Persons:* ${persons} Person(s)%0A` +
       `🛌 *Stay Type:* ${encodeURIComponent(formData.roomType)}%0A` +
       (discountPercent > 0
         ? `🎁 *Discount:* ${discountPercent}% OFF (Saved PKR ${savedAmount.toLocaleString()})%0A`
@@ -406,12 +411,13 @@ function TourDetailPage() {
                 <div className="form-group">
                   <label>Number of Persons</label>
                   <input
-                    type="number"
+                    type="text"
+                    inputMode="numeric"
                     name="persons"
-                    min={formData.roomType === "Couple (Private Room)" ? "2" : "1"}
-                    max="50"
+                    placeholder={`Min ${minPersons}, Max 50`}
                     value={formData.persons}
                     onChange={handleChange}
+                    onBlur={handlePersonsBlur}
                     required
                   />
                   {formData.roomType === "Couple (Private Room)" && (
