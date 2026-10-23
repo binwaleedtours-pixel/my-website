@@ -26,7 +26,6 @@ import Termandconditions from "./Termandconditions";
 import OurTour from "./OurTour";
 // GSAP Preloader Component
 import Preloader from "./Preloader";
-import Reviews from "./Reviews";
 import DiscountPopup from "./DiscountPopup";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +49,6 @@ function Home() {
       <AboutSection />
       <Features />
       <VideoCarousel />
-            <Reviews />
 
     </>
   );
