@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "./assets/BinWaleedTours.png";
+import AnnouncementBar from "./Announcementbar";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,9 @@ function Header() {
 
   return (
     <header className="header">
+      {/* Announcement bar: header ke top par, header ke saath sticky */}
+      <AnnouncementBar />
+
       <div className="nav-wrap">
         {/* Logo */}
         <Link to="/" className="logo" onClick={closeMenu}>
@@ -28,7 +32,7 @@ function Header() {
             Home
           </NavLink>
           <NavLink to="/OurTour" className={({ isActive }) => (isActive ? "active" : "")}>
-          Our Tours
+            Our Tours
           </NavLink>
           <NavLink to="/About" className={({ isActive }) => (isActive ? "active" : "")}>
             About Us
@@ -74,8 +78,7 @@ function Header() {
             Home
           </NavLink>
           <NavLink to="/OurTour" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
-                      Our Tours
-
+            Our Tours
           </NavLink>
           <NavLink to="/About" className={({ isActive }) => (isActive ? "active" : "")} onClick={closeMenu}>
             About Us

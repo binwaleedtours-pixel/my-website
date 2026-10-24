@@ -1,8 +1,5 @@
-
-import "./GalleryPage.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import "./GalleryPage.css";
-// Screenshot ke mutabiq sabhi images ki imports
 
 import img1 from "./gallery/IMG_0644.webp";
 import img3 from "./gallery/IMG_0765.webp";
@@ -49,7 +46,6 @@ import img71 from "./gallery/IMG_6577.webp";
 import img72 from "./gallery/IMG_6662.webp";
 import img73 from "./gallery/IMG_6723.webp";
 import img75 from "./gallery/IMG_6732.webp";
-
 
 const galleryImages = [
   { id: 1, url: img1 },
@@ -98,6 +94,68 @@ const galleryImages = [
   { id: 73, url: img73 },
   { id: 75, url: img75 },
 ];
+
+/* ---------- Gallery card: image load hone tak loader dikhata hai ---------- */
+function GalleryCard({ img, index, onOpen }) {
+  const [loaded, setLoaded] = useState(false);
+
+  // Cached image jo pehle se load ho chuki ho, uske liye loader foran hata do
+  const setImgRef = useCallback((el) => {
+    if (el && el.complete && el.naturalWidth > 0) setLoaded(true);
+  }, []);
+
+  return (
+    <div
+      className={`gallery-card ${loaded ? "is-loaded" : "is-loading"}`}
+      style={{ animationDelay: `${index * 0.02}s` }}
+      onClick={onOpen}
+    >
+      {!loaded && (
+        <div className="img-loader" aria-hidden="true">
+          <span className="img-spinner" />
+        </div>
+      )}
+
+      <img
+        ref={setImgRef}
+        src={img.url}
+        alt="Gallery item"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
+    </div>
+  );
+}
+
+/* ---------- Lightbox image: bari image aane tak spinner ---------- */
+function LightboxImage({ src }) {
+  const [loaded, setLoaded] = useState(false);
+
+  const setImgRef = useCallback((el) => {
+    if (el && el.complete && el.naturalWidth > 0) setLoaded(true);
+  }, []);
+
+  return (
+    <>
+      {!loaded && (
+        <div className="lightbox-loader" aria-hidden="true">
+          <span className="img-spinner img-spinner-lg" />
+        </div>
+      )}
+      <img
+        ref={setImgRef}
+        src={src}
+        alt="Gallery preview"
+        className={`lightbox-img ${loaded ? "is-loaded" : ""}`}
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+        onError={() => setLoaded(true)}
+      />
+    </>
+  );
+}
+
 function Our_Gallery() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const touchStartX = useRef(null);
@@ -179,14 +237,12 @@ function Our_Gallery() {
       >
         <div className="magazine-grid">
           {galleryImages.map((img, index) => (
-            <div
+            <GalleryCard
               key={img.id}
-              className="gallery-card"
-              style={{ animationDelay: `${index * 0.02}s` }}
-              onClick={() => setSelectedIndex(index)}
-            >
-              <img src={img.url} alt="Gallery item" loading="lazy" />
-            </div>
+              img={img}
+              index={index}
+              onOpen={() => setSelectedIndex(index)}
+            />
           ))}
         </div>
       </div>
@@ -220,16 +276,11 @@ function Our_Gallery() {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <img
+            {/* key badalne se har nayi image par loader dobara chalta hai */}
+            <LightboxImage
               key={galleryImages[selectedIndex].id}
               src={galleryImages[selectedIndex].url}
-              alt="Gallery preview"
-              className="lightbox-img"
-              draggable={false}
             />
-            {/* <div className="lightbox-counter">
-              {selectedIndex + 1} / {galleryImages.length}
-            </div> */}
           </div>
 
           <button

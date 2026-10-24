@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "./header";
 import Hero from "./Hero";
 import SplitCards from "./SplitCards";
-import Destinations from "./Destinations";
 import Expeditions from "./Expeditions";
 import Gallery from "./Gallery";
 import AboutSection from "./AboutSection";
@@ -15,7 +14,6 @@ import Features from "./Features";
 import VideoCarousel from "./VideoCarousel";
 import Contact_Us from "./Contact_Us";
 import Footer from "./Footer";
-
 // Page Views
 import CustomizeTour from "./CustomizeTour";
 import About from "./About";
@@ -26,7 +24,6 @@ import Termandconditions from "./Termandconditions";
 import OurTour from "./OurTour";
 // GSAP Preloader Component
 import Preloader from "./Preloader";
-import DiscountPopup from "./DiscountPopup";
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollToTop() {
@@ -88,6 +85,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+
       <Header />
 
       <Routes>
@@ -103,7 +101,6 @@ function App() {
       </Routes>
 
       <Footer />
-<DiscountPopup />
     </>
   );
 }
