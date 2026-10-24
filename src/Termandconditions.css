@@ -1,7 +1,12 @@
 .terms-page-wrapper {
   width: 100%;
+  padding-top: var(--header-h, 100px);
 }
 
+/* Sirf header ke gap ke liye: doosri CSS ki margin-top (60px) override hoti hai */
+.terms-page-wrapper .page-banner {
+  margin-top: 0;
+}
 /* ---------- Main Terms Section ---------- */
 .terms-section {
   background: var(--gray-bg, #efeeec);

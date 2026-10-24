@@ -1,7 +1,10 @@
 .contact-page-wrapper {
   width: 100%;
+  padding-top: var(--header-h, 100px);
 }
-
+.contact-page-wrapper .page-banner {
+  margin-top: 0;
+}
 /* ---------- Top Page Hero Banner ---------- */
 .page-banner {
   position: relative;

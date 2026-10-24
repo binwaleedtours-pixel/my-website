@@ -1,11 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "./assets/BinWaleedTours.png";
-import AnnouncementBar from "./Announcementbar";
+import AnnouncementBar from "./AnnouncementBar";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
+
+  // Header (bar + navbar) ki height measure karke CSS variable --header-h set karta hai.
+  // Pages ke banners isse apni jagah set karte hain, taake text header ke peeche na chhupe.
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const update = () => {
+      let h = 0;
+      el.querySelectorAll(".announcement-bar, .nav-wrap").forEach((p) => {
+        h += p.offsetHeight;
+      });
+      document.documentElement.style.setProperty("--header-h", `${h}px`);
+    };
+
+    update();
+
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    el.querySelectorAll(".announcement-bar, .nav-wrap").forEach((p) => ro.observe(p));
+
+    window.addEventListener("resize", update);
+    window.addEventListener("load", update); // logo/fonts load hone ke baad dobara naapo
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+      window.removeEventListener("load", update);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -16,7 +47,7 @@ function Header() {
   };
 
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       {/* Announcement bar: header ke top par, header ke saath sticky */}
       <AnnouncementBar />
 

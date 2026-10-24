@@ -1,5 +1,5 @@
-.gallery-page{background:#081210;color:#fff;min-height:100vh;padding-bottom:80px}
-.top-page-banner{position:relative;width:100%;height:260px;background:url("./assets/Banner.png") no-repeat center center/cover;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:60px;border-bottom:none}
+.gallery-page{background:#081210;color:#fff;min-height:100vh;padding-top:var(--header-h,100px);padding-bottom:80px;box-sizing:border-box}
+.top-page-banner{position:relative;width:100%;height:260px;background:url("./assets/Banner.png") no-repeat center center/cover;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:0;border-bottom:none}
 .banner-overlay{position:absolute;inset:0;background:rgba(8,18,16,.75);z-index:1}
 .banner-inner{position:relative;z-index:2}
 .page-category{color:#00c853;font-family:"Quicksand",sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:6px}

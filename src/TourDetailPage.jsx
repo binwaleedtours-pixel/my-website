@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toursData, DISCOUNT_PERCENT } from "./data/toursData";
 import "./TourDetailPage.css";
@@ -24,6 +24,45 @@ function TourDetailPage() {
   });
 
   const [bookingStatus, setBookingStatus] = useState(false);
+
+  // ---------- Header ki asli height (announcement bar + navbar) ----------
+  // Banner ka text aur sticky booking card header ke peeche na chhupe,
+  // is liye header ki height yahin se naap li jati hai.
+  const [headerH, setHeaderH] = useState(100);
+
+  useLayoutEffect(() => {
+    const header = document.querySelector("header");
+    if (!header) return;
+
+    const measure = () => {
+      let h = 0;
+      header
+        .querySelectorAll(".announcement-bar, .nav-wrap")
+        .forEach((p) => {
+          h += p.offsetHeight;
+        });
+      if (!h) h = header.offsetHeight;
+      setHeaderH(h);
+    };
+
+    measure();
+
+    // Bar close karne, resize ya logo load hone par dobara naapo
+    const ro = new ResizeObserver(measure);
+    ro.observe(header);
+    header
+      .querySelectorAll(".announcement-bar, .nav-wrap")
+      .forEach((p) => ro.observe(p));
+
+    window.addEventListener("resize", measure);
+    window.addEventListener("load", measure);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("load", measure);
+    };
+  }, []);
 
   // Single Main Image for Tour Card
   const mainTourImage =
@@ -128,7 +167,10 @@ function TourDetailPage() {
   };
 
   return (
-    <div className="tour-detail-page">
+    <div
+      className="tour-detail-page"
+      style={{ "--header-h": `${headerH}px` }}
+    >
       {/* Tour Banner */}
       <div
         className="tour-banner"

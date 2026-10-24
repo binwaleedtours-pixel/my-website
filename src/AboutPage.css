@@ -3,6 +3,10 @@
   width: 100%;
   overflow-x: hidden;
   background-color: var(--gray-bg, #efeeec);
+  padding-top: var(--header-h, 100px);   /* <-- ye line add karo */
+}
+.about-page .page-banner {
+  margin-top: 0;
 }
 
 /* ---------- Top Page Banner ---------- */

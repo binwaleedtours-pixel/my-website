@@ -1,7 +1,12 @@
 .customize-page-wrapper {
   width: 100%;
+  padding-top: var(--header-h, 100px);
 }
 
+/* Sirf header ke gap ke liye: doosri CSS ki margin-top (60px) override hoti hai */
+.customize-page-wrapper .page-banner {
+  margin-top: 0;
+}
 /* ---------- Main Customize Section ---------- */
 .customize-section {
   background: var(--gray-bg, #efeeec);

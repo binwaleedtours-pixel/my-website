@@ -16,8 +16,21 @@ function Contact_Us() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const whatsappMsg = `Hello Bin Waleed Tours!%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Destination:* ${formData.destination}%0A*Message:* ${formData.message}`;
-    window.open(`https://wa.me/923028908761?text=${whatsappMsg}`, "_blank");
+
+    // encodeURIComponent: &, #, ? jaise characters se link kharab nahi hoga
+    const text = [
+      "Hello Bin Waleed Tours!",
+      "",
+      `*Name:* ${formData.name}`,
+      `*Phone:* ${formData.phone}`,
+      `*Destination:* ${formData.destination}`,
+      `*Message:* ${formData.message}`,
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/923028908761?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
   };
 
   return (
@@ -56,9 +69,8 @@ function Contact_Us() {
                 <span className="icon">📍</span>
                 <div>
                   <h5>Office Location</h5>
-                  <p>26 F/F, Quaid Commercial, Near Eiffel Tower, Bahria Town Lahore </p>
-                                    <p>37AC E-BLock Muhafiz Town, Lahore </p>
-
+                  <p>26 F/F, Quaid Commercial, Near Eiffel Tower, Bahria Town Lahore</p>
+                  <p>37AC E-Block Muhafiz Town, Lahore</p>
                 </div>
               </div>
 
@@ -67,8 +79,7 @@ function Contact_Us() {
                 <div>
                   <h5>Phone / WhatsApp</h5>
                   <p>+923028908761</p>
-                                    <p>+923157764146</p>
-
+                  <p>+923157764146</p>
                 </div>
               </div>
 
@@ -147,14 +158,10 @@ function Contact_Us() {
                   <option value="Fairy Meadows">Fairy Meadows</option>
                   <option value="Swat Valley">Swat Valley</option>
                   <option value="Naran Valley">Naran Valley</option>
-
                   <option value="Khasmir">Khasmir</option>
                   <option value="Kumrat Jhazbanda">Kumrat Jhazbanda</option>
-                                    <option value="Kumrat Jhazbanda">Astor Minimerg</option>
-
-
+                  <option value="Astor Minimerg">Astor Minimerg</option>
                   <option value="Custom Tour">Custom Private Tour</option>
-                  
                 </select>
               </div>
 
@@ -177,19 +184,18 @@ function Contact_Us() {
         </div>
 
         {/* Google Map */}
-       {/* Google Map */}
-<div className="map-container">
-  <iframe
-    title="Bin Waleed Tours Location"
-    src="https://www.google.com/maps?q=26+F%2FF,+Quaid+Commercial,+Near+Eiffel+Tower,+Bahria+Town,+Lahore&output=embed&z=15"
-    width="100%"
-    height="400"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+        <div className="map-container">
+          <iframe
+            title="Bin Waleed Tours Location"
+            src="https://www.google.com/maps?q=26+F%2FF,+Quaid+Commercial,+Near+Eiffel+Tower,+Bahria+Town,+Lahore&output=embed&z=15"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </section>
     </div>
   );
