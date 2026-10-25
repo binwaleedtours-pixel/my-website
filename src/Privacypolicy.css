@@ -3,10 +3,10 @@
   padding-top: var(--header-h, 100px);
 }
 
-/* Sirf header ke gap ke liye: doosri CSS ki margin-top (60px) override hoti hai */
 .privacy-page-wrapper .page-banner {
   margin-top: 0;
 }
+
 /* ---------- Main Privacy Section ---------- */
 .privacy-section {
   background: var(--gray-bg, #efeeec);
