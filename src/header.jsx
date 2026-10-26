@@ -2,7 +2,7 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "./assets/BinWaleedTours.png";
-import AnnouncementBar from "./AnnouncementBar";
+import AnnouncementBar from "./Announcementbar";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
