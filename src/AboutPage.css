@@ -42,7 +42,7 @@
   color: #ffffff;
 }
 
-.breadcrumbs {
+.breadcrumbs { 
   display: flex;
   align-items: center;
   justify-content: center;
