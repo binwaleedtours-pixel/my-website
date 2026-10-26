@@ -74,7 +74,7 @@ function Gallery() {
     <div className="gallery-outer-wrapper">
       <section className="gallery-pin-section" ref={sectionRef}>
         <div className="section-headings">
-          <h2>Captured Moments</h2>
+          <h2> Moments</h2>
           <p>
             A glimpse into the breathtaking landscapes and unforgettable memories
             from our recent expeditions.
