@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { toursData, DISCOUNT_PERCENT } from "./data/toursData";
 import "./Expeditions.css";
@@ -48,103 +48,123 @@ const getPricing = (exp) => {
   };
 };
 
+/* Element viewport mein aate hi ek baar true ho jata hai */
+function useReveal(threshold = 0.15) {
+  const ref = useRef(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold, rootMargin: "0px 0px -60px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+
+  return [ref, shown];
+}
+
+function ExpCard({ exp, index }) {
+  const [ref, shown] = useReveal();
+  const p = getPricing(exp);
+  const onSale = p.discount > 0;
+
+  // Har row mein left -> right stagger (3 columns)
+  const delay = (index % 3) * 140;
+
+  return (
+    <div
+      ref={ref}
+      className={`exp-card ${shown ? "is-visible" : ""}`}
+      style={{ "--delay": `${delay}ms` }}
+    >
+      <Link to={`/tour/${exp.slug}`} className="exp-img-link">
+        <div className="exp-img">
+          <img src={exp.image} alt={exp.title} loading="lazy" />
+          <div className="exp-img-overlay" />
+          <span className="days-badge">{exp.badge}</span>
+          {onSale && <span className="sale-badge">🔥 {p.discount}% OFF</span>}
+          <span className="explore-pill">Explore Tour &rarr;</span>
+        </div>
+      </Link>
+
+      <div className="exp-body">
+        <Link to={`/tour/${exp.slug}`} className="exp-title-link">
+          <h4>{exp.title}</h4>
+        </Link>
+        <div className="exp-departure">{exp.departure}</div>
+        <div className="exp-divider"></div>
+
+        <div className="exp-price-row">
+          <span className="label">Starting from</span>
+          <span className="value">
+            {onSale && <span className="old-price">PKR {fmt(p.solo)}</span>}
+            PKR {fmt(p.newSolo)}
+          </span>
+        </div>
+
+        <div className="exp-sub">
+          <span>
+            Solo: {onSale && <s>{fmt(p.solo)}</s>} PKR {fmt(p.newSolo)}
+          </span>
+          <span>
+            Couple: {onSale && <s>{fmt(p.couple)}</s>} PKR {fmt(p.newCouple)}
+          </span>
+        </div>
+
+        <div className="exp-actions">
+          <Link to={`/tour/${exp.slug}`} className="btn-exp-book">
+            <span>Book Now</span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Expeditions() {
+  const [headRef, headShown] = useReveal(0.3);
+  const [btnRef, btnShown] = useReveal(0.5);
+
   return (
     <section className="expeditions" id="tours">
-      <div className="section-headings">
+      <div
+        ref={headRef}
+        className={`section-headings ${headShown ? "is-visible" : ""}`}
+      >
         <h2>Featured Expeditions</h2>
-        <p>Curated itineraries designed to showcase alpine beauty. From swift weekend escapes to comprehensive highland tours.</p>
+        <span className="heading-line" />
+        <p>
+          Curated itineraries designed to showcase alpine beauty. From swift
+          weekend escapes to comprehensive highland tours.
+        </p>
       </div>
 
       <div className="exp-grid">
-        {expeditionsData.slice(0, 6).map((exp) => {
-          const p = getPricing(exp);
-          const onSale = p.discount > 0;
-
-          return (
-            <div key={exp.id} className="exp-card">
-              <Link to={`/tour/${exp.slug}`} className="exp-img-link">
-                <div className="exp-img">
-                  <img src={exp.image} alt={exp.title} loading="lazy" />
-                  <span className="days-badge">{exp.badge}</span>
-                  {onSale && (
-                    <span
-                      className="sale-badge"
-                      style={{
-                        position: "absolute",
-                        top: "12px",
-                        left: "12px",
-                        background: "#ff3d00",
-                        color: "#fff",
-                        padding: "4px 12px",
-                        borderRadius: "20px",
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        zIndex: 2,
-                      }}
-                    >
-                      🔥 {p.discount}% OFF
-                    </span>
-                  )}
-                </div>
-              </Link>
-
-              <div className="exp-body">
-                <Link to={`/tour/${exp.slug}`} className="exp-title-link">
-                  <h4>{exp.title}</h4>
-                </Link>
-                <div className="exp-departure">{exp.departure}</div>
-                <div className="exp-divider"></div>
-
-                <div className="exp-price-row">
-                  <span className="label">Starting from</span>
-                  <span className="value">
-                    {onSale && (
-                      <span
-                        style={{
-                          textDecoration: "line-through",
-                          opacity: 0.55,
-                          fontSize: "14px",
-                          marginRight: "8px",
-                        }}
-                      >
-                        PKR {fmt(p.solo)}
-                      </span>
-                    )}
-                    PKR {fmt(p.newSolo)}
-                  </span>
-                </div>
-
-                <div className="exp-sub">
-                  <span>
-                    Solo:{" "}
-                    {onSale && (
-                      <s style={{ opacity: 0.55 }}>{fmt(p.solo)}</s>
-                    )}{" "}
-                    PKR {fmt(p.newSolo)}
-                  </span>
-                  <span>
-                    Couple:{" "}
-                    {onSale && (
-                      <s style={{ opacity: 0.55 }}>{fmt(p.couple)}</s>
-                    )}{" "}
-                    PKR {fmt(p.newCouple)}
-                  </span>
-                </div>
-
-                <div className="exp-actions">
-                  <Link to={`/tour/${exp.slug}`} className="btn-exp-book">Book Now</Link>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {expeditionsData.slice(0, 6).map((exp, i) => (
+          <ExpCard key={exp.id} exp={exp} index={i} />
+        ))}
       </div>
 
       {/* View All Button Section */}
-      <div className="view-all-wrap">
+      <div
+        ref={btnRef}
+        className={`view-all-wrap ${btnShown ? "is-visible" : ""}`}
+      >
         <Link to="/ourTour" className="btn-view-all">
-          View All Expeditions &rarr;
+          View All Expeditions <span className="arrow">&rarr;</span>
         </Link>
       </div>
     </section>

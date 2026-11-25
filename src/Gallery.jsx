@@ -13,14 +13,15 @@ import img7 from "./gallerySection/IMG_4497.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// alt add kar diya taake overlay mein "undefined" / khali text na aaye
 const images = [
-  { id: 1, url: img1 },
-  { id: 2, url: img2 },
-  { id: 3, url: img3 },
-  { id: 4, url: img4 },
-  { id: 5, url: img5 },
-  { id: 6, url: img6 },
-  { id: 7, url: img7 },
+  { id: 1, url: img1, alt: "Mountain Views" },
+  { id: 2, url: img2, alt: "Valley Adventures" },
+  { id: 3, url: img3, alt: "Alpine Lakes" },
+  { id: 4, url: img4, alt: "Camping Nights" },
+  { id: 5, url: img5, alt: "Highland Trails" },
+  { id: 6, url: img6, alt: "Golden Hours" },
+  { id: 7, url: img7, alt: "Unforgettable Memories" },
 ];
 
 function Gallery() {
@@ -32,41 +33,45 @@ function Gallery() {
     const track = trackRef.current;
     if (!section || !track) return;
 
-    // GSAP Context with MatchMedia (Desktop par chalega, Mobile par automatically disable ho jayega)
-    let ctx = gsap.context(() => {
-      ScrollTrigger.matchMedia({
-        // Desktop Only (769px and above)
-        "(min-width: 769px)": function () {
-          const getScrollAmount = () => track.scrollWidth - window.innerWidth;
+    const mm = gsap.matchMedia();
 
-          gsap.to(track, {
-            x: () => -getScrollAmount(),
-            ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              pin: true,
-              scrub: 1,
-              start: "top 10%",
-              end: () => `+=${getScrollAmount() * 1.5}`,
-              invalidateOnRefresh: true,
-              anticipatePin: 1,
-            },
-          });
-        },
-        // Mobile Only (768px and below) - GSAP off rahega taaki grid kharab na ho
-        "(max-width: 768px)": function () {
-          // Clean reset for mobile
-          gsap.set(track, { clearProps: "all" });
+    mm.add("(min-width: 769px)", () => {
+      const getScrollAmount = () =>
+        Math.max(0, track.scrollWidth - window.innerWidth);
+
+      gsap.to(track, {
+        x: () => -getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          pin: true,
+          scrub: 1,
+          start: "top 10%",
+          end: () => `+=${getScrollAmount() * 1.5}`,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
         },
       });
-    }, sectionRef);
+    });
+
+    // Sab images decode hone ke baad measurements dobara lo
+    const imgs = Array.from(track.querySelectorAll("img"));
+    let cancelled = false;
+    Promise.all(
+      imgs.map((im) =>
+        im.decode ? im.decode().catch(() => null) : Promise.resolve()
+      )
+    ).then(() => {
+      if (!cancelled) ScrollTrigger.refresh();
+    });
 
     const handleLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", handleLoad);
 
     return () => {
-      ctx.revert();
+      cancelled = true;
       window.removeEventListener("load", handleLoad);
+      mm.revert();
     };
   }, []);
 
@@ -76,19 +81,21 @@ function Gallery() {
         <div className="section-headings">
           <h2>Captured Moments</h2>
           <p>
-            A glimpse into the breathtaking landscapes and unforgettable memories
-            from our recent expeditions.
+            A glimpse into the breathtaking landscapes and unforgettable
+            memories from our recent expeditions.
           </p>
         </div>
 
         <div className="gallery-wrapper">
           <div className="gallery-track" ref={trackRef}>
-            {images.map((img, index) => (
+            {images.map((img) => (
               <div key={img.id} className="gallery-card">
-                <img 
-                  src={img.url} 
-                  alt={img.alt || `Gallery image ${img.id}`} 
-                  loading={index === 0 ? "eager" : "lazy"} 
+                <img
+                  src={img.url}
+                  alt={img.alt}
+                  loading="eager"
+                  decoding="async"
+                  draggable="false"
                 />
                 <div className="gallery-overlay">
                   <span>{img.alt}</span>

@@ -1,60 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap");
+
 .preloader-overlay-wrapper {
+  --pl-gold: #e6c182;
+  --pl-cream: #f6ecd2;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  background-color: #051a17;
+  background: linear-gradient(#030d0c, #0a2b26);
   z-index: 99999;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: "Jost", "Baloo 2", sans-serif;
+  color: var(--pl-cream);
 }
 
-.preloader-overlay-wrapper .tube-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ---------- Scene ---------- */
+.preloader-overlay-wrapper .pl-scene {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  visibility: hidden;
+  overflow: visible;
+  transform-origin: 68% 28%;
+  z-index: 1;
 }
 
-.preloader-overlay-wrapper .tube {
-  position: relative;
-  width: 100%;
-  height: 16vw;
+.preloader-overlay-wrapper .pl-star {
+  fill: #fff;
+  opacity: 0.2;
+  animation: pl-twinkle 2.6s ease-in-out infinite;
+}
+@keyframes pl-twinkle {
+  50% {
+    opacity: 0.85;
+  }
 }
 
-.preloader-overlay-wrapper .line {
+.preloader-overlay-wrapper .pl-mist {
+  fill: rgba(240, 225, 190, 0.28);
+}
+.preloader-overlay-wrapper .pl-mist-a {
+  animation: pl-drift 16s ease-in-out infinite alternate;
+}
+.preloader-overlay-wrapper .pl-mist-b {
+  animation: pl-drift 22s ease-in-out infinite alternate-reverse;
+}
+@keyframes pl-drift {
+  from {
+    transform: translateX(-70px);
+  }
+  to {
+    transform: translateX(70px);
+  }
+}
+
+.preloader-overlay-wrapper .pl-trail-ghost {
+  fill: none;
+  stroke: rgba(246, 236, 210, 0.22);
+  stroke-width: 2.5;
+  stroke-dasharray: 2 9;
+  stroke-linecap: round;
+}
+.preloader-overlay-wrapper .pl-trail {
+  fill: none;
+  stroke: var(--pl-gold);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+
+.preloader-overlay-wrapper .pl-flag line {
+  stroke: #f6ecd2;
+  stroke-width: 2;
+}
+.preloader-overlay-wrapper .pl-flag polygon {
+  fill: var(--pl-gold);
+}
+
+/* ---------- Hiker ---------- */
+.preloader-overlay-wrapper .pl-hiker {
+  filter: drop-shadow(0 0 5px rgba(255, 205, 140, 0.55));
+}
+.preloader-overlay-wrapper .pl-walk {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: pl-bob 0.55s ease-in-out infinite alternate;
+}
+@keyframes pl-bob {
+  from {
+    transform: translateY(0) rotate(-1.6deg);
+  }
+  to {
+    transform: translateY(-3px) rotate(1.6deg);
+  }
+}
+.preloader-overlay-wrapper .pl-hiker.is-still .pl-walk {
+  animation-play-state: paused;
+}
+
+.preloader-overlay-wrapper .pl-vignette {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  perspective: 700px;
-  transform-style: preserve-3d;
-  line-height: 1;
-  margin: 0;
-  letter-spacing: 0.1vw;
-  font-size: 4.5vw;
-  font-family: "Baloo 2", sans-serif;
-  font-weight: 800;
-  white-space: nowrap;
-  text-align: center;
-  color: #e6c182;
-  text-transform: uppercase;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    transparent 45%,
+    rgba(2, 8, 7, 0.65) 100%
+  );
 }
 
-.preloader-overlay-wrapper .line .char {
+/* ---------- Brand name ---------- */
+.preloader-overlay-wrapper .pl-header {
+  position: absolute;
+  top: 9vh;
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+  text-align: center;
+  z-index: 5;
+}
+
+.preloader-overlay-wrapper .pl-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5.6vw, 4.8rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pl-cream);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+.preloader-overlay-wrapper .pl-char {
   display: inline-block;
-  backface-visibility: hidden;
-  opacity: 0; /* animation shuru hone se pehle flash na ho */
+}
+
+.preloader-overlay-wrapper .pl-tagline {
+  margin: 0.7rem 0 0;
+  font-size: clamp(0.7rem, 1.3vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(246, 236, 210, 0.82);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- HUD ---------- */
+.preloader-overlay-wrapper .pl-hud {
+  position: absolute;
+  z-index: 5;
+}
+
+.preloader-overlay-wrapper .pl-count {
+  right: clamp(1rem, 4vw, 3.5rem);
+  bottom: clamp(1.6rem, 5vh, 3rem);
+  display: flex;
+  align-items: flex-start;
+  line-height: 0.85;
+}
+.preloader-overlay-wrapper .pl-count-num {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  color: var(--pl-cream);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+.preloader-overlay-wrapper .pl-count-pct {
+  margin: 0.5em 0 0 0.2em;
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--pl-gold);
+}
+
+.preloader-overlay-wrapper .pl-alt {
+  left: clamp(1rem, 4vw, 3.5rem);
+  bottom: clamp(1.6rem, 5vh, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.preloader-overlay-wrapper .pl-alt-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: rgba(246, 236, 210, 0.65);
+}
+.preloader-overlay-wrapper .pl-alt-value {
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.preloader-overlay-wrapper .pl-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(246, 236, 210, 0.12);
+  z-index: 5;
+}
+.preloader-overlay-wrapper .pl-bar-fill {
+  height: 100%;
+  background: var(--pl-gold);
+  transform-origin: left center;
+  transform: scaleX(0);
 }
 
 @media (max-width: 768px) {
-  .preloader-overlay-wrapper .line {
-    font-size: 7vw;
+  .preloader-overlay-wrapper .pl-header {
+    top: 11vh;
+  }
+  .preloader-overlay-wrapper .pl-title {
+    letter-spacing: 0.08em;
+  }
+  .preloader-overlay-wrapper .pl-tagline {
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-overlay-wrapper .pl-star,
+  .preloader-overlay-wrapper .pl-walk,
+  .preloader-overlay-wrapper .pl-mist {
+    animation: none;
   }
 }
